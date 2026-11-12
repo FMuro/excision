@@ -1,0 +1,68 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% Compatibilidad con compilaciones mediante pdfLaTeX.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+
+% Matemáticas y diagramas.
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning}
+\usepackage{tikz-cd}
+
+% Tema docente, incorporado como submódulo en beamerteaching/.
+\makeatletter
+\def\input@path{{beamerteaching/}}
+\makeatother
+\usetheme{Teaching}
+\titlegraphic{%
+  \includegraphics[width=0.20\paperwidth]{beamerteaching/assets/logo-us.png}%
+}
+
+\title{El teorema de excisión}
+\subtitle{Homología singular}
+\author{Fernando Muro}
+\institute{Universidad de Sevilla}
+\date{}
+
+% Comandos generales.
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\Int}{\operatorname{int}}           % interior de un subconjunto
+
+% Homología singular.
+\newcommand{\simplex}[1]{\Delta^{#1}}          % símplice estándar
+\newcommand{\Sing}{C}                           % cadenas singulares C_n(X)
+\newcommand{\LC}{\mathit{LC}}                   % cadenas singulares lineales LC_n(Y)
+\newcommand{\cU}{\mathcal{U}}                   % recubrimiento {U_i}_{i\in I}
+\newcommand{\CU}[1][\cU]{C^{#1}}                % cadenas U-pequeñas C^U_n(X)
+\newcommand{\Sd}{S}                             % operador subdivisión en cadenas
+\newcommand{\sd}{\operatorname{sd}}             % familia de símplices de la subdivisión
+
+% Colores predefinidos.
+\usebeamercolor{alerted text}
+\colorlet{alertcolor}{fg}
+\usebeamercolor{frame rule}
+\colorlet{secondarycolor}{bg}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\input{secciones/subdivision-simplices}
+\input{secciones/cadenas-lineales}
+\input{secciones/subdivision-cadenas-lineales}
+\input{secciones/subdivision-cadenas}
+\input{secciones/cadenas-subordinadas}
+\input{secciones/cadenas-pequenas}
+\input{secciones/excision}
+\input{secciones/mayer-vietoris}
+
+\end{document}

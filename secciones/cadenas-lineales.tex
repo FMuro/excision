@@ -1,0 +1,172 @@
+\section{Cadenas lineales}
+
+% ------------------------------------------------------------------------
+\subsection{Símplices singulares lineales}
+
+\begin{frame}
+  \frametitle{Símplices singulares lineales}
+
+  
+
+  \begin{definition}
+    Sea $Y\subseteq\R^N$. Un \alert{símplice singular lineal} de dimensión $n$ en $Y$ es una
+    aplicación $\sigma\colon\simplex{n}\to Y$ que es la restricción de una
+    aplicación lineal $\R^{n+1}\to\R^N$.
+  \end{definition}
+
+  Por linealidad, un símplice singular lineal $\sigma$ está determinado por los
+  vértices $v_i=\sigma(e_i)$, y su imagen es el símplice generalizado $[v_0,\ldots,v_n]$ contenido en $Y$. Recíprocamente, si $[v_0,\ldots,v_n]\subseteq Y$, la fórmula
+  \[
+    \sigma(t_0,\ldots,t_n)=t_0v_0+\cdots+t_nv_n
+  \]
+  define un símplice singular lineal en $Y$ con $\sigma(e_i)=v_i$. Por tanto, los símplices singulares lineales en $Y$ son \alert{lo mismo} que los símplices generalizados contenidos en $Y$. Por eso escribimos
+  \[
+    \sigma=[v_0,\ldots,v_n].
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ejemplos}
+
+  \begin{columns}[c]
+    \begin{column}{0.56\textwidth}
+      \begin{itemize}
+        \item Si $Y$ es \alert{convexo}, $[v_0,\ldots,v_n]$ está contenido
+          en $Y$ si y solo si $v_0,\ldots,v_n\in Y$.
+        \item En general no basta con que los vértices estén en $Y$: en la
+          corona circular de la figura, $[v_0,v_1,v_2]$ es un símplice
+          singular lineal en $Y$, pero $[w_0,w_1,w_2]$ no.
+        \item La identidad de $\simplex{n}$ es el símplice singular lineal
+          \[
+            \id_{\simplex{n}}=[e_0,\ldots,e_n]\colon
+            \simplex{n}\longrightarrow\simplex{n}.
+          \]
+        \item Las inclusiones de las caras
+          $\delta_i\colon\simplex{n-1}\to\simplex{n}$ son
+          $\delta_i=[e_0,\ldots,\widehat{e_i},\ldots,e_n]$.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.40\textwidth}
+      \centering
+      \begin{tikzpicture}[scale=0.85]
+        \fill[alertcolor!10,even odd rule] (0,0) circle (2.2) (0,0) circle (1);
+        \draw (0,0) circle (2.2) (0,0) circle (1);
+        \node at (-1.25,-1.55) {$Y$};
+        \coordinate (A) at (1.15,0.35);
+        \coordinate (B) at (1.95,-0.25);
+        \coordinate (C) at (1.6,0.95);
+        \filldraw[thick,fill=alertcolor!35] (A) -- (B) -- (C) -- cycle;
+        \foreach \p/\l/\pos in {A/v_0/left, B/v_1/below, C/v_2/above}
+          \fill (\p) circle (1.4pt) node[\pos] {$\scriptstyle\l$};
+        \coordinate (D) at (-1.5,0.5);
+        \coordinate (E) at (0.2,1.5);
+        \coordinate (F) at (-0.3,-1.5);
+        \draw[thick,dashed] (D) -- (E) -- (F) -- cycle;
+        \foreach \p/\l/\pos in {D/w_0/left, E/w_1/above, F/w_2/below}
+          \fill (\p) circle (1.4pt) node[\pos] {$\scriptstyle\l$};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{El complejo de cadenas lineales}
+
+\begin{frame}
+  \frametitle{Cadenas lineales}
+
+  \begin{definition}
+    Sea $Y\subseteq\R^N$. El grupo de \alert{cadenas lineales}
+    $\LC_n(Y)\subseteq\Sing_n(Y)$ es el subgrupo generado por los
+    símplices singulares lineales de dimensión $n$ en $Y$.
+  \end{definition}
+
+  \medskip
+
+  Como los símplices singulares lineales forman parte de la base de
+  $\Sing_n(Y)$, el grupo $\LC_n(Y)$ es abeliano libre con base los
+  símplices singulares lineales en $Y$.
+
+  \medskip
+
+  Un elemento de $\LC_n(Y)$ es una suma finita
+  $\sum_k m_k\,[v_0^k,\ldots,v_n^k]$, con $m_k\in\Z$ y cada
+  $[v_0^k,\ldots,v_n^k]\subseteq Y$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Las cadenas lineales forman un subcomplejo}
+
+  \begin{proposition}
+    Para todo símplice singular lineal $\sigma=[v_0,\ldots,v_n]$ en $Y$,
+    con $n\geq1$,
+    \[
+      \partial\sigma=\sum_{i=0}^n(-1)^i\,\partial_i\sigma
+      =\sum_{i=0}^n(-1)^i\,[v_0,\ldots,\widehat{v_i},\ldots,v_n].
+    \]
+    En consecuencia, $\partial(\LC_n(Y))\subseteq\LC_{n-1}(Y)$, y
+    $\LC_\bullet(Y)$ es un subcomplejo de $\Sing_\bullet(Y)$.
+  \end{proposition}
+
+  \begin{proof}
+    Recordemos que $\partial\sigma=\sum_i(-1)^i\,\sigma\circ\delta_i$, con
+    $\delta_i=[e_0,\ldots,\widehat{e_i},\ldots,e_n]$. La composición
+    $\sigma\circ\delta_i$ es restricción de una aplicación lineal y envía
+    los vértices $e_0,\ldots,e_{n-1}$ de $\simplex{n-1}$ a
+    $v_0,\ldots,\widehat{v_i},\ldots,v_n$. Por tanto,
+    $\sigma\circ\delta_i=[v_0,\ldots,\widehat{v_i},\ldots,v_n]
+    =\partial_i\sigma$, que es un símplice singular lineal en $Y$, pues
+    $\partial_i\sigma\subseteq\sigma\subseteq Y$.
+  \end{proof}
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{La versión aumentada}
+
+\begin{frame}
+  \frametitle{Recordatorio: el complejo singular aumentado}
+
+  El \alert{complejo singular aumentado} $\widetilde{\Sing}_\bullet(X)$
+  coincide con $\Sing_\bullet(X)$ en dimensiones $n\geq0$, y además
+  \[
+    \widetilde{\Sing}_{-1}(X)=\Z,
+    \qquad
+    \partial=\varepsilon\colon\Sing_0(X)\longrightarrow\Z,
+    \quad
+    \varepsilon\Bigl(\sum_k m_k\,x_k\Bigr)=\sum_k m_k.
+  \]
+  Es un complejo porque $\varepsilon\partial=0$: el borde de un $1$-símplice
+  singular es la diferencia de sus dos extremos.
+
+  \medskip
+
+  Su homología es la homología reducida $\widetilde{H}_\bullet(X)$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Cadenas lineales aumentadas}
+
+  Conviene ver el generador $1\in\Z=\widetilde{\Sing}_{-1}(X)$ como el
+  \alert{símplice vacío} $[\;]$, de dimensión $-1$ y sin vértices.
+
+  \begin{definition}
+    El complejo de \alert{cadenas lineales aumentado}
+    $\widetilde{\LC}_\bullet(Y)$ coincide con $\LC_\bullet(Y)$ en
+    dimensiones $n\geq0$, y $\widetilde{\LC}_{-1}(Y)=\Z\,[\;]$.
+  \end{definition}
+
+  \medskip
+
+  Como $\partial[v_0]=\varepsilon[v_0]=[\;]$, la fórmula
+  \[
+    \partial[v_0,\ldots,v_n]=\sum_{i=0}^n(-1)^i\,
+    [v_0,\ldots,\widehat{v_i},\ldots,v_n]
+  \]
+  vale para todo $n\geq0$. En particular,
+  $\widetilde{\LC}_\bullet(Y)$ es un \alert{subcomplejo} de
+  $\widetilde{\Sing}_\bullet(Y)$.
+
+  \medskip
+
+  Esto permitirá tratar la dimensión $0$ igual que las demás.
+\end{frame}
