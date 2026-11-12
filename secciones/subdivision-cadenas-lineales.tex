@@ -1,7 +1,265 @@
 \section{Subdivisión de cadenas lineales}
 
-\begin{frame}
-  \frametitle{Subdivisión de cadenas lineales}
+% ------------------------------------------------------------------------
+\subsection{El cono}
 
-  % Pendiente: S en LC(Y) definido recursivamente por S(σ)=b_σ·S(∂σ), morfismo de complejos y homotopía con la identidad.
+\begin{frame}
+  \frametitle{El cono sobre una cadena lineal}
+
+  \begin{definition}
+    Sea $b\in Y$. El \alert{cono} de vértice $b$ es el homomorfismo
+    \[
+      b\colon\widetilde{\LC}_n(Y)\longrightarrow\widetilde{\LC}_{n+1}(Y),
+      \qquad
+      b[w_0,\ldots,w_n]=[b,w_0,\ldots,w_n],
+    \]
+    para $n\geq-1$, donde $b[\;]=[b]$.
+  \end{definition}
+
+  \medskip
+
+  Está bien definido porque $Y$ es convexo: $b,w_0,\ldots,w_n\in Y$ dan un
+  símplice singular lineal $[b,w_0,\ldots,w_n]$ en $Y$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{El borde de un cono}
+
+  \begin{lemma}
+    En $\widetilde{\LC}_\bullet(Y)$ se tiene $\partial b+b\partial=\id$.
+  \end{lemma}
+
+  \begin{proof}
+    Por linealidad basta probarlo en $\sigma=[w_0,\ldots,w_n]$.
+
+    \medskip
+
+    Si $n=-1$, $\partial b[\;]=\partial[b]=[\;]$ y $b\partial[\;]=0$.
+
+    \medskip
+
+    Si $n\geq0$, en $[b,w_0,\ldots,w_n]$ la cara $0$ es $\sigma$ y la cara
+    $i+1$ es $b\,\partial_i\sigma$, luego
+    \[
+      \partial b\sigma
+      =\sigma+\sum_{i=0}^n(-1)^{i+1}\,b\,\partial_i\sigma
+      =\sigma-b\partial\sigma.\qedhere
+    \]
+  \end{proof}
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{El operador subdivisión}
+
+\begin{frame}
+  \frametitle{Definición del operador subdivisión}
+
+  \begin{definition}
+    El \alert{operador subdivisión}
+    $\Sd\colon\widetilde{\LC}_n(Y)\to\widetilde{\LC}_n(Y)$ se define por
+    recurrencia en $n\geq-1$ sobre los símplices singulares lineales
+    $\sigma=[v_0,\ldots,v_n]$:
+    \[
+      \Sd[\;]=[\;],
+      \qquad
+      \Sd\sigma=b_\sigma\bigl(\Sd(\partial\sigma)\bigr),\quad n\geq0,
+    \]
+    y se extiende por linealidad.
+  \end{definition}
+
+  \medskip
+
+  El baricentro $b_\sigma$ está en $\sigma\subseteq Y$, luego el cono
+  $b_\sigma$ está definido.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ejemplos}
+
+  \begin{columns}[c]
+    \begin{column}{0.52\textwidth}
+      \begin{itemize}
+        \item $n=0$: $\Sd[v]=[v]\bigl(\Sd[\;]\bigr)=[v]$. Es la identidad.
+        \item $n=1$: como $\partial[v_0,v_1]=[v_1]-[v_0]$,
+          \[
+            \Sd[v_0,v_1]=[b,v_1]-[b,v_0],
+          \]
+          con $b=b_{[v_0,v_1]}$. Son los dos símplices de $\sd[v_0,v_1]$,
+          el segundo con el signo cambiado.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (4,0);
+        \coordinate (M) at (2,0);
+        \draw[thick,-] (A) -- (M);
+        \draw[thick,-] (M) -- (B);
+        \fill (A) circle (1.6pt) node[below] {$v_0$};
+        \fill (B) circle (1.6pt) node[below] {$v_1$};
+        \fill (M) circle (1.6pt) node[below] {$b$};
+        \node at (1,0.45) {$[b,v_0]$};
+        \node at (3,0.45) {$[b,v_1]$};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+
+  \medskip
+
+  El segmento $[b,v_0]$ va de $b$ a $v_0$, y el signo $-$ invierte su
+  orientación: $\Sd[v_0,v_1]$ recorre $[v_0,v_1]$ de $v_0$ a $v_1$ pasando por $b$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{$\Sd\sigma$ es una combinación de $\sd(\sigma)$}
+
+  \begin{lemma}
+    Sea $\sigma$ un símplice singular lineal de dimensión $n\geq0$. Todo
+    símplice singular lineal que aparece en $\Sd\sigma$ con coeficiente no
+    nulo pertenece a $\sd(\sigma)$.
+  \end{lemma}
+
+  \begin{proof}
+    Por inducción en $n$. Si $n=0$, $\Sd\sigma=\sigma$ y $\sd(\sigma)=\{\sigma\}$.
+
+    \medskip
+
+    Si $n\geq1$,
+    \[
+      \Sd\sigma=b_\sigma\Bigl(\sum_{i=0}^n(-1)^i\,\Sd(\partial_i\sigma)\Bigr).
+    \]
+    Por hipótesis de inducción, $\Sd(\partial_i\sigma)$ es combinación de
+    símplices $[w_0,\ldots,w_{n-1}]\in\sd(\partial_i\sigma)$, y el cono los
+    convierte en $[b_\sigma,w_0,\ldots,w_{n-1}]$, que están en
+    $\sd(\sigma)$ por definición.
+  \end{proof}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Consecuencia: los símplices de $\Sd\sigma$ son pequeños}
+
+  \begin{corollary}
+    Sea $\sigma$ un símplice singular lineal de dimensión $n$. Todo símplice
+    singular lineal $\tau$ que aparece en $\Sd\sigma$ cumple
+    \[
+      \tau\subseteq\sigma
+      \qquad\text{y}\qquad
+      \diam\tau\leq\frac{n}{n+1}\diam\sigma.
+    \]
+  \end{corollary}
+
+  \begin{proof}
+    Por el lema, $\tau\in\sd(\sigma)$. Basta aplicar los resultados de la
+    sección anterior: la subdivisión está contenida en $\sigma$ y la
+    proposición del diámetro.
+  \end{proof}
+
+  \medskip
+
+  Este es el único dato geométrico que necesitaremos del operador $\Sd$.
+  Lo que sigue es álgebra pura.
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{$\Sd$ es un morfismo de complejos}
+
+\begin{frame}
+  \frametitle{$\Sd$ conmuta con el borde}
+
+  \begin{proposition}
+    El operador $\Sd\colon\widetilde{\LC}_\bullet(Y)\to\widetilde{\LC}_\bullet(Y)$ es un
+    morfismo de complejos: $\partial\Sd=\Sd\partial$.
+  \end{proposition}
+
+  \begin{proof}
+    Basta ver $\partial\Sd\sigma=\Sd\partial\sigma$ para un símplice singular
+    lineal $\sigma$ de dimensión $n\geq-1$, por inducción en $n$. En grado
+    $-1$ ambos miembros son nulos.
+
+    \medskip
+
+    Sea $n\geq0$ y supongamos el resultado en grado $n-1$. Por el lema del
+    cono,
+    \[
+      \partial\Sd\sigma
+      =\partial b_\sigma\bigl(\Sd\partial\sigma\bigr)
+      =\Sd\partial\sigma-b_\sigma\bigl(\partial\Sd\partial\sigma\bigr).
+    \]
+    Por hipótesis de inducción,
+    $\partial\Sd\partial\sigma=\Sd\partial\partial\sigma=0$, luego
+    $\partial\Sd\sigma=\Sd\partial\sigma$.
+  \end{proof}
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{$\Sd$ es homotópico a la identidad}
+
+\begin{frame}[allowframebreaks, t]
+  \frametitle{La homotopía entre $\Sd$ y la identidad}
+
+  \begin{definition}
+    Definimos $T\colon\widetilde{\LC}_n(Y)\to\widetilde{\LC}_{n+1}(Y)$ por
+    recurrencia en $n\geq-1$ sobre los símplices singulares lineales
+    $\sigma$:
+    \[
+      T[\;]=0,
+      \qquad
+      T\sigma=b_\sigma\bigl(\sigma-T\partial\sigma\bigr),\quad n\geq0,
+    \]
+    y se extiende por linealidad.
+  \end{definition}
+
+  \begin{proposition}
+    En $\widetilde{\LC}_\bullet(Y)$, se tiene que $\partial T+T\partial=\id-\Sd$.
+  \end{proposition}
+
+  \begin{proof}
+    Basta probarlo sobre un símplice singular lineal $\sigma$ de dimensión
+    $n\geq-1$, por inducción en $n$. En grado $-1$, $T=0$, $\partial=0$ y
+    $\Sd=\id$, así que ambos miembros son nulos.
+
+    \framebreak
+
+    Sea $n\geq0$ y supongamos el resultado en grado $n-1$. Aplicado a
+    $\partial\sigma$ da
+    \[
+      \partial T\partial\sigma
+      =\partial\sigma-\Sd\partial\sigma-T\partial\partial\sigma
+      =\partial\sigma-\Sd\partial\sigma,
+    \]
+    luego
+    \[
+      \partial\bigl(\sigma-T\partial\sigma\bigr)
+      =\Sd\partial\sigma.
+    \]
+    Por el lema del cono,
+    \begin{align*}
+      \partial T\sigma
+      &=\partial b_\sigma\bigl(\sigma-T\partial\sigma\bigr)\\
+      &=\sigma-T\partial\sigma
+        -b_\sigma\partial\bigl(\sigma-T\partial\sigma\bigr)\\
+      &=\sigma-T\partial\sigma-b_\sigma\Sd\partial\sigma\\
+      &=\sigma-T\partial\sigma-\Sd\sigma.
+    \end{align*}
+    Es decir, $\partial T\sigma+T\partial\sigma=\sigma-\Sd\sigma$.
+  \end{proof}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Resumen}
+
+  Para todo convexo $Y\subseteq\R^N$ hemos construido
+  \begin{itemize}
+    \item un morfismo de complejos $\Sd\colon\widetilde{\LC}_\bullet(Y)\to\widetilde{\LC}_\bullet(Y)$,
+    \item una homotopía de cadenas $T$ con $\partial T+T\partial=\id-\Sd$,
+  \end{itemize}
+  tales que, para cada símplice singular lineal $\sigma$ de dimensión $n$,
+  $\Sd\sigma$ es una combinación de símplices singulares lineales contenidos
+  en $\sigma$ y de diámetro $\leq\frac{n}{n+1}\diam\sigma$.
+
+  \medskip
+
+  Siguiente paso: aplicarlo a $Y=\simplex{n}$ y transportarlo a las cadenas
+  singulares de cualquier espacio mediante los símplices singulares.
 \end{frame}

@@ -1,7 +1,214 @@
 \section{El operador subdivisión}
 
-\begin{frame}
-  \frametitle{El operador subdivisión}
+% ------------------------------------------------------------------------
+\subsection{Naturalidad en el caso lineal}
 
-  % Pendiente: S en cadenas lineales y singulares, morfismo de complejos, homotopía de cadenas con la identidad.
+\begin{frame}[allowframebreaks]
+  \frametitle{Las aplicaciones afines respetan la subdivisión lineal}
+
+  Sea $f\colon Y\to Y'$ la restricción de una aplicación afín entre convexos.
+  Entonces $f[v_0,\ldots,v_n]=[f(v_0),\ldots,f(v_n)]$, así que $f$ induce
+  \[
+    f_\#\colon\widetilde{\LC}_\bullet(Y)\to\widetilde{\LC}_\bullet(Y'),
+    \qquad f_\#[\;]=[\;],
+  \]
+  que conmuta con el borde y cumple $f_\#(b\alpha)=f(b)\,f_\#\alpha$ para
+  $b\in Y$. Además, $f(b_\sigma)=b_{f_\#\sigma}$ para todo símplice singular
+  lineal $\sigma$, pues $f$ conserva las combinaciones afines.
+
+  \framebreak
+
+  \begin{lemma}
+    $f_\#\Sd=\Sd f_\#$ y $f_\#T=Tf_\#$ en $\widetilde{\LC}_\bullet(Y)$.
+  \end{lemma}
+
+  \begin{proof}
+    Por inducción en $n\geq-1$ sobre un símplice singular lineal $\sigma$ de
+    dimensión $n$; en grado $-1$ es trivial. Si $n\geq0$,
+    \begin{align*}
+      f_\#\Sd\sigma&=f(b_\sigma)\,f_\#\Sd\partial\sigma
+        =b_{f_\#\sigma}\,\Sd\partial f_\#\sigma=\Sd f_\#\sigma,\\
+      f_\#T\sigma&=f(b_\sigma)\,f_\#(\sigma-T\partial\sigma)
+        =b_{f_\#\sigma}\bigl(f_\#\sigma-T\partial f_\#\sigma\bigr)=Tf_\#\sigma,
+    \end{align*}
+    usando la hipótesis de inducción y que $f_\#$ conmuta con $\partial$.
+  \end{proof}
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{Definición en cadenas singulares}
+
+\begin{frame}
+  \frametitle{El operador subdivisión en cadenas singulares}
+
+  Sea $\iota_n=\id_{\simplex{n}}=[e_0,\ldots,e_n]\in\LC_n(\simplex{n})$. El
+  símplice $\simplex{n}\subseteq\R^{n+1}$ es convexo, luego ya tenemos
+  $\Sd\iota_n\in\LC_n(\simplex{n})$ y $T\iota_n\in\LC_{n+1}(\simplex{n})$.
+
+  \begin{definition}
+    Sea $X$ un espacio topológico y $\sigma\colon\simplex{n}\to X$ un
+    símplice singular. Definimos
+    \[
+      \Sd\sigma=\sigma_\#(\Sd\iota_n)\in\Sing_n(X),
+      \qquad
+      T\sigma=\sigma_\#(T\iota_n)\in\Sing_{n+1}(X),
+    \]
+    y extendemos por linealidad a
+    $\Sd\colon\Sing_n(X)\to\Sing_n(X)$ y $T\colon\Sing_n(X)\to\Sing_{n+1}(X)$.
+  \end{definition}
+
+  \medskip
+
+  Es decir, se subdivide el símplice estándar y se lleva el resultado a $X$
+  mediante $\sigma$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Compatibilidad con el caso lineal}
+
+  \begin{lemma}
+    Sea $\sigma\colon\simplex{n}\to X$ un símplice singular y
+    $\lambda\colon\simplex{m}\to\simplex{n}$ un símplice singular lineal.
+    Entonces
+    \[
+      \Sd(\sigma\lambda)=\sigma_\#\Sd\lambda,
+      \qquad
+      T(\sigma\lambda)=\sigma_\#T\lambda.
+    \]
+    En particular, para $\sigma=\id_{\simplex{n}}$, $\Sd$ y $T$ coinciden
+    sobre $\LC_\bullet(\simplex{n})$ con los operadores lineales.
+  \end{lemma}
+
+  \begin{proof}
+    Como $\lambda$ es afín y $\lambda=\lambda_\#\iota_m$, por el lema de
+    naturalidad lineal
+    \[
+      \Sd(\sigma\lambda)=(\sigma\lambda)_\#\Sd\iota_m
+      =\sigma_\#\lambda_\#\Sd\iota_m
+      =\sigma_\#\Sd\lambda_\#\iota_m
+      =\sigma_\#\Sd\lambda,
+    \]
+    y análogamente para $T$.
+  \end{proof}
+
+  Por tanto no hay ambigüedad en la notación $\Sd$ y $T$.
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{Propiedades}
+
+\begin{frame}
+  \frametitle{$\Sd$ es un morfismo de complejos}
+
+  \begin{proposition}
+    $\Sd\colon\Sing_\bullet(X)\to\Sing_\bullet(X)$ es un morfismo de complejos.
+  \end{proposition}
+
+  \begin{proof}
+    Sea $\sigma\colon\simplex{n}\to X$ con $n\geq1$ (si $n=0$ ambos miembros
+    son nulos). Como $\partial\iota_n=\sum_i(-1)^i\delta_i$ con $\delta_i$
+    lineales,
+    \[
+      \partial\Sd\sigma
+      =\sigma_\#\partial\Sd\iota_n
+      =\sigma_\#\Sd\partial\iota_n
+      =\sum_{i=0}^n(-1)^i\,\sigma_\#\Sd\delta_i
+      =\sum_{i=0}^n(-1)^i\,\Sd(\sigma\delta_i)
+      =\Sd\partial\sigma.
+    \]
+    Hemos usado que $\Sd$ es un morfismo de complejos en $\LC_\bullet(\simplex{n})$ y
+    el lema anterior con $\lambda=\delta_i$.
+  \end{proof}
+\end{frame}
+
+\begin{frame}
+  \frametitle{$\Sd$ es homotópico a la identidad}
+
+  \begin{proposition}
+    $\partial T+T\partial=\id-\Sd$ en $\Sing_\bullet(X)$.
+  \end{proposition}
+
+  \begin{proof}
+    Sea $\sigma\colon\simplex{n}\to X$. Por la identidad lineal
+    $\partial T\iota_n=\iota_n-\Sd\iota_n-T\partial\iota_n$ (si $n=0$,
+    $T\partial\iota_0=T[\;]=0$),
+    \[
+      \partial T\sigma
+      =\sigma_\#\partial T\iota_n
+      =\sigma-\Sd\sigma-\sum_{i=0}^n(-1)^i\,\sigma_\#T\delta_i
+      =\sigma-\Sd\sigma-\sum_{i=0}^n(-1)^i\,T(\sigma\delta_i),
+    \]
+    por el lema de compatibilidad con $\lambda=\delta_i$. La última suma es
+    $T\partial\sigma$, luego $\partial T\sigma+T\partial\sigma=\sigma-\Sd\sigma$.
+  \end{proof}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Naturalidad}
+
+  \begin{proposition}
+    Sea $g\colon X\to X'$ continua. Entonces $g_\#\Sd=\Sd g_\#$ y
+    $g_\#T=Tg_\#$.
+  \end{proposition}
+
+  \begin{proof}
+    Para $\sigma\colon\simplex{n}\to X$,
+    \[
+      g_\#\Sd\sigma=g_\#\sigma_\#\Sd\iota_n=(g\sigma)_\#\Sd\iota_n=\Sd(g\sigma)
+      =\Sd g_\#\sigma,
+    \]
+    y análogamente para $T$.
+  \end{proof}
+
+  \medskip
+
+  En particular, si $\sigma$ tiene imagen en $A\subseteq X$, lo mismo ocurre con
+  los símplices que aparecen en $\Sd\sigma$ y $T\sigma$. Por tanto $\Sd$ y $T$
+  se restringen a $\Sing_\bullet(A)$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Los símplices de $\Sd\sigma$ son pequeños}
+
+  \begin{proposition}
+    Sea $\sigma\colon\simplex{n}\to X$. Todo símplice singular que aparece en
+    $\Sd\sigma$ con coeficiente no nulo es de la forma $\sigma\lambda$, con
+    $\lambda\colon\simplex{n}\to\simplex{n}$ un símplice singular lineal
+    tal que
+    \[
+      \lambda\in\sd(\iota_n),
+      \qquad
+      \diam\lambda\leq\frac{n}{n+1}\diam\simplex{n}.
+    \]
+  \end{proposition}
+
+  \begin{proof}
+    $\Sd\sigma=\sigma_\#\Sd\iota_n$, y los símplices lineales que aparecen en
+    $\Sd\iota_n$ están en $\sd(\iota_n)$ y cumplen la cota del diámetro,
+    por el corolario de la sección anterior.
+  \end{proof}
+
+  \medskip
+
+  Es decir, $\Sd\sigma$ está formado por restricciones de $\sigma$ a los
+  símplices de la subdivisión baricéntrica de $\simplex{n}$, que son más
+  pequeños.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Resumen}
+
+  Para todo espacio $X$ hemos construido
+  \begin{itemize}
+    \item un morfismo de complejos $\Sd\colon\Sing_\bullet(X)\to\Sing_\bullet(X)$,
+    \item una homotopía de cadenas $T$ con $\partial T+T\partial=\id-\Sd$,
+  \end{itemize}
+  naturales en $X$, que no sacan las cadenas de ningún subespacio, y tales que
+  $\Sd\sigma$ es combinación de restricciones de $\sigma$ a símplices de
+  diámetro $\leq\frac{n}{n+1}\diam\simplex{n}$.
+
+  \medskip
+
+  Siguiente paso: iterar $\Sd$ hasta que los símplices sean tan pequeños que
+  cada uno caiga en un abierto del recubrimiento.
 \end{frame}
