@@ -40,7 +40,8 @@
 \newcommand{\Sing}{C}                           % cadenas singulares C_n(X)
 \newcommand{\LC}{\mathit{LC}}                   % cadenas singulares lineales LC_n(Y)
 \newcommand{\cU}{\mathcal{U}}                   % recubrimiento {U_i}_{i\in I}
-\newcommand{\CU}[1][\cU]{C^{#1}}                % cadenas U-pequeñas C^U_n(X)
+\newcommand{\CU}[1][\cU]{\Sing^{\mkern2mu#1}}              % cadenas U-pequeñas C^U_n(X)
+\newcommand{\tCU}[1][\cU]{\widetilde{\Sing}^{\mkern2mu#1}}      % versión aumentada
 \newcommand{\Sd}{S}                             % operador subdivisión en cadenas
 \newcommand{\sd}{\operatorname{sd}}             % familia de símplices de la subdivisión
 
@@ -60,6 +61,7 @@
 \input{secciones/cadenas-lineales}
 \input{secciones/subdivision-cadenas-lineales}
 \input{secciones/subdivision-cadenas}
+\input{secciones/subdivision-iterada}
 \input{secciones/cadenas-subordinadas}
 \input{secciones/cadenas-pequenas}
 \input{secciones/excision}

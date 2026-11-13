@@ -1,7 +1,239 @@
 \section{El teorema de las cadenas pequeñas}
 
+% ------------------------------------------------------------------------
+\subsection{Enunciado}
+
 \begin{frame}
   \frametitle{El teorema de las cadenas pequeñas}
 
-  % Pendiente: retracción rho que fija C^U(X) y homotopía D con D nula sobre C^U(X).
+  \begin{theorem}
+    Sea $\cU$ un recubrimiento de un espacio $X$ e
+    $\iota\colon\CU_\bullet(X)\hookrightarrow\Sing_\bullet(X)$ la inclusión.
+    Existen un morfismo de complejos
+    $\rho\colon\Sing_\bullet(X)\to\CU_\bullet(X)$ y homomorfismos
+    $D\colon\Sing_n(X)\to\Sing_{n+1}(X)$ tales que
+    \begin{enumerate}
+      \item $\rho\iota=\id$, es decir, $\rho$ fija $\CU_\bullet(X)$;
+      \item $\partial D+D\partial=\id-\iota\rho$;
+      \item $D$ se anula sobre $\CU_\bullet(X)$.
+    \end{enumerate}
+  \end{theorem}
+
+  En particular, $\iota$ es una equivalencia de homotopía de cadenas con
+  inversa homotópica~$\rho$.
+
+  \medskip
+
+  La demostración se hará en varias etapas, usando la subdivisión iterada y el lema del número de Lebesgue.
+\end{frame}
+
+
+% ------------------------------------------------------------------------
+\subsection{El número de subdivisiones}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{El número de subdivisiones de un símplice}
+
+  Sea $\sigma\colon\simplex{n}\to X$ un símplice singular. Por la
+  proposición de Lebesgue, existe un menor entero $k(\sigma)\geq0$ tal que
+  $\Sd^i\sigma\in\CU_n(X)$ para todo $i\geq k(\sigma)$.
+
+  \begin{definition}
+    Definimos $m(\sigma)\geq0$ por recurrencia en $n$:
+    \[
+      m(\sigma)=
+      \begin{cases}
+        k(\sigma), & n=0,\\
+        \max\bigl\{k(\sigma),m(\partial_0\sigma),\ldots,m(\partial_n\sigma)\bigr\},
+          & n\geq1.
+      \end{cases}
+    \]
+  \end{definition}
+
+  \framebreak
+
+  \begin{lemma}
+    Para todo símplice singular $\sigma\colon\simplex{n}\to X$:
+    \begin{enumerate}
+      \item $\Sd^i\sigma\in\CU_n(X)$ para todo $i\geq m(\sigma)$;
+      \item si $n\geq1$, $m(\partial_j\sigma)\leq m(\sigma)$ para todo $j$;
+      \item si $\sigma\in\CU_n(X)$, entonces $m(\sigma)=0$.
+    \end{enumerate}
+  \end{lemma}
+
+  \begin{proof}
+    Las dos primeras propiedades se siguen de la definición, ya que
+    $m(\sigma)\geq k(\sigma)$ y $m(\sigma)\geq m(\partial_j\sigma)$.
+
+    \medskip
+
+    La tercera, por inducción en $n$. Como $\Sd$ preserva
+    $\CU_\bullet(X)$, $\Sd^i\sigma\in\CU_n(X)$ para todo $i\geq0$, luego
+    $k(\sigma)=0$. Si $n\geq1$, las caras $\partial_j\sigma$ también están en
+    $\CU_{n-1}(X)$, y por hipótesis de inducción $m(\partial_j\sigma)=0$.
+    Así, $m(\sigma)=0$.
+  \end{proof}
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{Construcción de la retracción}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{Definición de la homotopía y de la retracción}
+
+  \begin{definition}
+    Sea $D\colon\Sing_n(X)\to\Sing_{n+1}(X)$ el homomorfismo dado sobre los
+    símplices singulares por
+    \[
+      D\sigma=T_{m(\sigma)}\sigma,
+    \]
+    y sea \[\rho=\id-\partial D-D\partial\colon\Sing_n(X)\to\Sing_n(X).\]
+  \end{definition}
+
+  \framebreak
+
+  \begin{lemma}
+    El homomorfismo $\rho\colon\Sing_\bullet(X)\to\Sing_\bullet(X)$ es un morfismo de complejos, $\partial\rho=\rho\partial$.
+  \end{lemma}
+
+  \begin{proof}
+    Como $\partial^2=0$,
+    \[
+      \partial\rho
+      = \partial(\id-\partial D-D\partial)
+      =\partial-\partial D\partial
+      \qquad\text{y}\qquad
+      \rho\partial
+      =(\id-\partial D-D\partial)\partial
+      =\partial-\partial D\partial.
+    \]
+  \end{proof}
+
+  Por definición, $\partial D+D\partial=\id-\rho$. Falta ver que $\rho$
+  toma valores en $\CU_\bullet(X)$ y las demás propiedades.
+\end{frame}
+
+\begin{frame}
+  \frametitle{La homotopía se anula sobre las cadenas subordinadas}
+
+  \begin{lemma}
+    El homomorfismo $D$ se anula sobre $\CU_\bullet(X)$ y $\rho$ fija
+    $\CU_\bullet(X)$.
+  \end{lemma}
+
+  \begin{proof}
+    Sea $\sigma\colon\simplex{n}\to X$ un símplice singular subordinado a $\cU$. Por un lema anterior,
+    $m(\sigma)=0$, luego $D\sigma=T_0\sigma=0$. Esto prueba que $D$ se anula
+    sobre $\CU_\bullet(X)$.
+
+    \medskip
+
+    Además, $\partial\sigma\in\CU_{n-1}(X)$, así que también
+    $D\partial\sigma=0$, y por tanto
+    \[
+      \rho\sigma=\sigma-\partial D\sigma-D\partial\sigma=\sigma.
+    \]
+  \end{proof}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{La retracción toma valores en las cadenas subordinadas}
+
+  \begin{lemma}
+    Se tiene que $\rho\bigl(\Sing_n(X)\bigr)\subseteq\CU_n(X)$.
+  \end{lemma}
+
+  \begin{proof}
+    Sea $\sigma\colon\simplex{n}\to X$ un símplice singular, $m=m(\sigma)$
+    y $m_j=m(\partial_j\sigma)$, que cumplen $m_j\leq m$. Por el lema de iteración de homotopías,
+    \[
+      \partial D\sigma=\partial T_m\sigma
+      =\sigma-\Sd^m\sigma-T_m\partial\sigma.
+    \]
+
+    \framebreak
+
+    Sustituyendo en la definición de $\rho$ y usando que
+    $\partial\sigma=\sum_j(-1)^j\partial_j\sigma$,
+    \begin{align*}
+      \rho\sigma
+      &=\sigma-\partial D\sigma-D\partial\sigma
+       =\Sd^m\sigma+T_m\partial\sigma-D\partial\sigma\\
+      &=\Sd^m\sigma+\sum_{j=0}^n(-1)^j\bigl(T_m-T_{m_j}\bigr)(\partial_j\sigma)\\
+      &=\Sd^m\sigma+\sum_{j=0}^n(-1)^j\sum_{i=m_j}^{m-1}T\Sd^i(\partial_j\sigma).
+    \end{align*}
+
+    El primer término está en $\CU_n(X)$ porque $m=m(\sigma)$. En los
+    demás, $i\geq m_j=m(\partial_j\sigma)$, luego
+    $\Sd^i(\partial_j\sigma)\in\CU_{n-1}(X)$, y como $T$ preserva las cadenas
+    subordinadas, $T\Sd^i(\partial_j\sigma)\in\CU_n(X)$. Por tanto
+    $\rho\sigma\in\CU_n(X)$.
+  \end{proof}
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{Consecuencias}
+
+\begin{frame}
+  \frametitle{Demostración del teorema}
+
+  Los lemas anteriores prueban el teorema:
+  \begin{itemize}
+    \item $\rho\colon \Sing_\bullet(X)\to\CU_\bullet(X)$ es un morfismo de complejos;
+    \item $\rho$ fija $\CU_\bullet(X)$, es decir, $\rho\iota=\id$;
+    \item $\partial D+D\partial=\id-\iota\rho$, por definición de $\rho$;
+    \item $D$ se anula sobre $\CU_\bullet(X)$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Consecuencia en homología}
+
+  \begin{corollary}
+    La inclusión $\iota\colon\CU_\bullet(X)\hookrightarrow\Sing_\bullet(X)$
+    induce isomorfismos
+    \[
+      H_n\bigl(\CU_\bullet(X)\bigr)\cong H_n(X)
+    \]
+    para todo $n$, con inverso inducido por $\rho$.
+  \end{corollary}
+
+  \medskip
+
+  Es decir, la homología singular puede calcularse usando solo símplices
+  subordinados a un recubrimiento cualquiera.
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{Versión reducida}
+
+  El complejo aumentado $\tCU_\bullet(X)$ coincide con $\CU_\bullet(X)$
+  en grados $n\geq0$ y con $\widetilde{\Sing}_{-1}(X)=\Z\,[\;]$ en grado
+  $-1$. Es un subcomplejo de $\widetilde{\Sing}_\bullet(X)$.
+
+  \begin{corollary}
+    La inclusión $\tCU_\bullet(X)\hookrightarrow\widetilde{\Sing}_\bullet(X)$
+    induce isomorfismos
+    \[
+      H_n\bigl(\tCU_\bullet(X)\bigr)\cong\widetilde{H}_n(X)
+    \]
+    para todo $n$.
+  \end{corollary}
+
+  \framebreak
+
+  \begin{proof}
+    Extendemos $\rho$ por la identidad y $D$ por $0$ en grado $-1$. Todo
+    $0$-símplice tiene imagen en un punto, que está en algún $U_i$, así que
+    $\CU_0(X)=\Sing_0(X)$ y $\rho$ es la identidad en grado $0$. Por tanto
+    $\rho$ conmuta con el borde $\Sing_0(X)\to\widetilde{\Sing}_{-1}(X)$, y
+    es un morfismo de complejos aumentados.
+
+    \medskip
+
+    Las identidades $\rho\iota=\id$ y $\partial D+D\partial=\id-\iota\rho$
+    se cumplen en grados $n\geq1$ como antes. En grado $0$ también, pues
+    $D\partial\sigma=D[\;]=0$, y en grado $-1$ ambos miembros son nulos.
+    Así, la inclusión es una equivalencia de homotopía de cadenas.
+  \end{proof}
 \end{frame}

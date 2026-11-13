@@ -1,7 +1,214 @@
 \section{Cadenas subordinadas a un recubrimiento}
 
-\begin{frame}
-  \frametitle{Cadenas subordinadas a un recubrimiento}
+% ------------------------------------------------------------------------
+\subsection{El complejo de cadenas subordinadas}
 
-  % Pendiente: complejo C^U(X) de símplices contenidos en algún U_i, con X = unión de los interiores.
+\begin{frame}[allowframebreaks]
+  \frametitle{Recubrimientos}
+
+  \begin{definition}
+    Un \alert{recubrimiento} de un espacio $X$ es una familia $\cU=\{U_i\}_{i\in I}$ de
+    subconjuntos de $X$ cuyos interiores recubren $X$:
+    \[
+      X=\bigcup_{i\in I}\Int U_i.
+    \]
+  \end{definition}
+
+  Los $U_i$ no tienen por qué ser abiertos. Lo que se exige es más que
+  $X=\bigcup_iU_i$: todo punto de $X$ debe estar en el interior de algún
+  $U_i$.
+
+  \framebreak
+
+  \begin{example}
+    \begin{itemize}
+      \item Todo recubrimiento por abiertos, en particular $\cU=\{X\}$.
+      \item Dos subconjuntos $A,B\subseteq X$ con $\Int A\cup\Int B=X$. Esta
+        será la situación de Mayer--Vietoris.
+      \item Si $Z\subseteq A\subseteq X$ con $\overline{Z}\subseteq\Int A$,
+        la familia $\{A,X\setminus Z\}$, pues
+        $\Int(X\setminus Z)=X\setminus\overline{Z}\supseteq X\setminus\Int A$.
+        Esta será la situación de la excisión.
+    \end{itemize}
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Cadenas subordinadas}
+
+  Sea $\cU=\{U_i\}_{i\in I}$ un recubrimiento de $X$.
+
+  \begin{definition}
+    Un símplice singular $\sigma\colon\simplex{n}\to X$ está
+    \alert{subordinado} a $\cU$ si $\sigma(\simplex{n})\subseteq U_i$ para
+    algún $i\in I$. El grupo de \alert{cadenas subordinadas} a $\cU$
+    \[
+      \CU_n(X)\subseteq\Sing_n(X)
+    \]
+    es el subgrupo generado por los símplices singulares de dimensión $n$
+    subordinados a $\cU$.
+  \end{definition}
+
+  Es abeliano libre, con base los símplices subordinados a $\cU$. Las caras
+  de un símplice subordinado a $\cU$ también lo están, ya que
+  $(\partial_j\sigma)(\simplex{n-1})=(\sigma\delta_j)(\simplex{n-1})\subseteq\sigma(\simplex{n})\subseteq U_i$.
+  Por tanto 
+  $\CU_\bullet(X)$ es un \alert{subcomplejo} de $\Sing_\bullet(X)$.
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{Descripción mediante los subespacios}
+
+  Para $A\subseteq X$ identificamos $\Sing_\bullet(A)$ con el subcomplejo de
+  $\Sing_\bullet(X)$ generado por los símplices singulares $\sigma\colon\simplex{n}\to X$ con imagen $\sigma(\simplex{n})\subset A$.
+
+  \begin{proposition}
+    Para todo $n\geq0$, se tiene que
+    \[
+      \CU_n(X)=\sum_{i\in I}\Sing_n(U_i)\subseteq\Sing_n(X).
+    \]
+  \end{proposition}
+
+  \begin{proof}
+    Ambos miembros son subgrupos de $\Sing_n(X)$ generados por el mismo
+    conjunto de símplices singulares: los que tienen imagen en algún $U_i$.
+  \end{proof}
+
+  \framebreak
+
+  \begin{example}
+    \begin{itemize}
+      \item Si $X\in\cU$, entonces $\CU_\bullet(X)=\Sing_\bullet(X)$.
+      \item Si $\cU=\{A,B\}$, entonces
+        $\CU_\bullet(X)=\Sing_\bullet(A)+\Sing_\bullet(B)$. La suma no es
+        directa: $\Sing_\bullet(A)\cap\Sing_\bullet(B)=\Sing_\bullet(A\cap B)$.
+    \end{itemize}
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Un símplice que no está subordinado}
+
+  \begin{columns}[c]
+    \begin{column}{0.48\textwidth}
+      \centering
+      \begin{tikzpicture}[scale=0.85]
+        \draw[thick] (0,0) ellipse (2.1 and 1.4);
+        \draw[thick] (2.4,0) ellipse (2.1 and 1.4);
+        \node at (-2.0,1.2) {$U$};
+        \node at (4.4,1.2) {$V$};
+        \coordinate (P) at (-1.3,-0.3);
+        \coordinate (M) at (1.2,0.2);
+        \coordinate (Q) at (3.7,-0.3);
+        \draw[very thick, alertcolor] (P) .. controls (-0.2,0.6) .. (M)
+          .. controls (2.6,-0.2) .. (Q);
+        \foreach \p in {P,M,Q}
+          \fill (\p) circle (1.8pt);
+        \node[below, xshift=5pt] at (P) {$\sigma(e_0)$};
+        \node[below=2pt] at (M) {$\sigma(b)$};
+        \node[below, xshift=-5pt] at (Q) {$\sigma(e_1)$};
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      Sea $\cU=\{U,V\}$ y $\sigma\colon\simplex{1}\to X$ un camino de $U$ a
+      $V$, que no está contenido en ninguno de los dos. Su subdivisión
+      \[
+        \Sd\sigma=\sigma[b,e_1]-\sigma[b,e_0]
+      \]
+      es suma de dos símplices subordinados a $\cU$: el primero tiene imagen
+      en $V$ y el segundo en $U$.
+    \end{column}
+  \end{columns}
+
+  \medskip
+
+  Esta es la idea que desarrollaremos: subdividir lo suficiente convierte
+  cualquier cadena en una cadena subordinada a $\cU$.
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{Subdivisión de cadenas subordinadas}
+
+\begin{frame}
+  \frametitle{Los operadores de subdivisión preservan las cadenas subordinadas}
+
+  \begin{proposition}
+    Se tiene que
+    \[
+      \Sd\bigl(\CU_n(X)\bigr)\subseteq\CU_n(X),
+      \qquad
+      T\bigl(\CU_n(X)\bigr)\subseteq\CU_{n+1}(X).
+    \]
+    Es decir, $\Sd$ se restringe a un morfismo de complejos
+    $\CU_\bullet(X)\to\CU_\bullet(X)$, y $T$ a una homotopía de cadenas
+    entre este y la identidad. Lo mismo ocurre con $\Sd^k$ y $T_k$ para
+    todo $k\geq0$.
+  \end{proposition}
+
+  \begin{proof}
+    Sea $\sigma$ un símplice con imagen en $U_i$. Por naturalidad, $\Sd$ y
+    $T$ se restringen a $\Sing_\bullet(U_i)$, luego $\Sd\sigma$ y $T\sigma$
+    son combinaciones de símplices con imagen en $U_i$. La fórmula
+    $\partial T+T\partial=\id-\Sd$ se cumple en $\Sing_\bullet(X)$, y por
+    tanto en el subcomplejo $\CU_\bullet(X)$. Para $\Sd^k$ y $T_k$, que
+    son composiciones y sumas de $\Sd$ y $T$, basta aplicar lo anterior y
+    el lema de iteración de homotopías.
+  \end{proof}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{Subdividir lo suficiente da cadenas subordinadas}
+
+  Recordemos el lema del número de Lebesgue: si $K$ es un espacio métrico
+  compacto y $\mathcal{V}$ un recubrimiento de $K$, existe
+  $\varepsilon>0$ tal que todo subconjunto de $K$ de diámetro
+  $<\varepsilon$ está contenido en algún elemento de $\mathcal{V}$.
+
+  \begin{proposition}
+    Sea $\cU$ un recubrimiento de $X$ y $\sigma\colon\simplex{n}\to X$ un
+    símplice singular. Existe $k\geq0$ tal que $\Sd^m\sigma\in\CU_n(X)$
+    para todo $m\geq k$.
+  \end{proposition}
+
+  \framebreak
+
+  \begin{proof}
+    Puesto que $X=\bigcup_i\Int U_i$, la familia
+    $\{\sigma^{-1}(\Int U_i)\}_{i\in I}$ es un recubrimiento abierto del
+    espacio métrico compacto $\simplex{n}$. Sea $\varepsilon>0$ su número de
+    Lebesgue. Por el corolario de la subdivisión iterada, existe $k\geq0$ tal
+    que todo elemento de $\sd^m(\simplex{n})$ tiene diámetro $<\varepsilon$
+    para todo $m\geq k$.
+
+    \medskip
+
+    Sea $m\geq k$. Por definición,
+    $\Sd^m\sigma=\sigma_\#\Sd^m\id_{\simplex{n}}$.
+    El operador $\Sd$ en $\LC_\bullet(\simplex{n})$ cumple que
+    $\Sd^m\id_{\simplex{n}}$ es combinación de símplices singulares lineales
+    $\lambda\in\sd^m(\id_{\simplex{n}})$.
+    Cada uno de ellos tiene diámetro $<\varepsilon$, luego está
+    contenido en algún $\sigma^{-1}(U_i)$, y por tanto
+    $(\sigma\lambda)(\simplex{n})\subseteq U_i$. Así,
+    $\Sd^m\sigma=\sigma_\#\Sd^m\id_{\simplex{n}}$ es combinación de símplices en $\sigma\lambda$ y por tanto $\Sd^m\sigma\in\CU_n(X)$.
+  \end{proof}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Resumen}
+
+  Dado un recubrimiento $\cU$ de $X$, tenemos
+  \begin{itemize}
+    \item un subcomplejo $\CU_\bullet(X)\subseteq\Sing_\bullet(X)$, que
+      $\Sd^k$ y $T_k$ preservan para todo $k\geq0$;
+    \item para cada símplice singular $\sigma$, un $k$ tal que
+      $\Sd^m\sigma\in\CU_\bullet(X)$ para todo $m\geq k$.
+  \end{itemize}
+
+  \medskip
+
+  El número $k$ depende del símplice, así que no existe en general un
+  $k$ que sirva para todos a la vez. Siguiente paso: combinar las potencias
+  de $\Sd$, símplice a símplice, para construir una retracción
+  $\rho\colon\Sing_\bullet(X)\to\CU_\bullet(X)$ homotópica a la identidad.
 \end{frame}

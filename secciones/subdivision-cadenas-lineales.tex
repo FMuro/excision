@@ -134,28 +134,6 @@
     convierte en $[b_\sigma,w_0,\ldots,w_{n-1}]$, que están en
     $\sd(\sigma)$ por definición.
   \end{proof}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Consecuencia: los símplices de $\Sd\sigma$ son pequeños}
-
-  \begin{corollary}
-    Sea $\sigma$ un símplice singular lineal de dimensión $n$. Todo símplice
-    singular lineal $\tau$ que aparece en $\Sd\sigma$ cumple
-    \[
-      \tau\subseteq\sigma
-      \qquad\text{y}\qquad
-      \diam\tau\leq\frac{n}{n+1}\diam\sigma.
-    \]
-  \end{corollary}
-
-  \begin{proof}
-    Por el lema, $\tau\in\sd(\sigma)$. Basta aplicar los resultados de la
-    sección anterior: la subdivisión está contenida en $\sigma$ y la
-    proposición del diámetro.
-  \end{proof}
-
-  \medskip
 
   Este es el único dato geométrico que necesitaremos del operador $\Sd$.
   Lo que sigue es álgebra pura.
@@ -260,9 +238,9 @@
     \item un morfismo de complejos $\Sd\colon\widetilde{\LC}_\bullet(Y)\to\widetilde{\LC}_\bullet(Y)$,
     \item una homotopía de cadenas $T$ con $\partial T+T\partial=\id-\Sd$,
   \end{itemize}
-  tales que, para cada símplice singular lineal $\sigma$ de dimensión $n$,
-  $\Sd\sigma$ es una combinación de símplices singulares lineales contenidos
-  en $\sigma$ y de diámetro $\leq\frac{n}{n+1}\diam\sigma$.
+  tales que, para cada símplice singular lineal $\sigma$, la cadena
+  $\Sd\sigma$ es una combinación de elementos de la subdivisión
+  baricéntrica $\sd(\sigma)$.
 
   \medskip
 

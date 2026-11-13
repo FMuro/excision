@@ -1,0 +1,47 @@
+\section{Iteración de la subdivisión}
+
+% ------------------------------------------------------------------------
+\subsection{Iteración de homotopías}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{Potencias de un morfismo homotópico a la identidad}
+
+  \begin{lemma}
+    Sea $C_\bullet$ un complejo de cadenas, $\Sd\colon C_\bullet\to C_\bullet$ un morfismo de complejos homotópico a la identidad y $T$ una
+    homotopía de cadenas concreta, $\partial T+T\partial=\id-\Sd$. Para cada
+    $k\geq0$, sea
+    \[
+      T_k=\sum_{j=0}^{k-1}T\Sd^j\colon C_n\to C_{n+1}.
+    \]
+    En particular, $T_0=0$ por ser una suma vacía.
+    Entonces $\partial T_k+T_k\partial=\id-\Sd^k$. En particular, $\Sd^k$
+    es homotópico a la identidad.
+  \end{lemma}
+
+  El subíndice de $T_k$ indica el número de iteraciones, no el grado.
+  Directamente de la definición, si $m'\leq m$,
+  \[
+    T_m-T_{m'}=\sum_{j=m'}^{m-1}T\Sd^j.
+  \]
+
+  \framebreak
+
+  \begin{proof}
+    Como $\Sd$ es un morfismo de complejos, $\Sd^j\partial=\partial\Sd^j$
+    para todo $j\geq0$. Por tanto, para cada $j$,
+    \[
+      \partial T\Sd^j+T\Sd^j\partial
+      =\partial T\Sd^j+T\partial\Sd^j
+      =(\partial T+T\partial)\Sd^j
+      =(\id-\Sd)\Sd^j
+      =\Sd^j-\Sd^{j+1}.
+    \]
+    Sumando para $j=0,\ldots,k-1$, vemos que en el miembro derecho se producen multitud de cancelaciones entre sumandos, excepto del primer y último término, y obtenemos:
+    \[
+      \partial T_k+T_k\partial
+      =\sum_{j=0}^{k-1}\bigl(\Sd^j-\Sd^{j+1}\bigr)
+      =\id-\Sd^k.
+    \]
+    Si $k=0$, ambos miembros son nulos, pues $T_0=0$ y $\Sd^0=\id$.
+  \end{proof}
+\end{frame}

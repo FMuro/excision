@@ -1,7 +1,139 @@
 \section{La sucesión de Mayer--Vietoris}
 
+% ------------------------------------------------------------------------
+\subsection{Enunciado}
+
 \begin{frame}
   \frametitle{La sucesión de Mayer--Vietoris}
 
-  % Pendiente: deducción a partir de las cadenas pequeñas.
+  Sean $A,B\subseteq X$ con $\Int A\cup\Int B=X$, y sean
+  \[
+    i\colon A\cap B\hookrightarrow A,\quad
+    j\colon A\cap B\hookrightarrow B,\quad
+    k\colon A\hookrightarrow X,\quad
+    l\colon B\hookrightarrow X
+  \]
+  las inclusiones.
+
+  \begin{theorem}[Mayer--Vietoris]
+    Existe una sucesión exacta larga
+    \begin{multline*}
+      \cdots\to H_n(A\cap B)\xrightarrow{\ \varphi_*\ }H_n(A)\oplus H_n(B)
+      \xrightarrow{\ \psi_*\ }H_n(X)\\
+      \xrightarrow{\ \partial\ }H_{n-1}(A\cap B)\to\cdots\to H_0(X)\to0,
+    \end{multline*}
+    donde $\varphi_*(x)=(i_*x,-j_*x)$ y $\psi_*(y,z)=k_*y+l_*z$.
+  \end{theorem}
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{Demostración}
+
+\begin{frame}
+  \frametitle{Una sucesión exacta corta de complejos}
+
+  Sea $\cU=\{A,B\}$, de modo que
+  $\CU_\bullet(X)=\Sing_\bullet(A)+\Sing_\bullet(B)$.
+
+  \begin{lemma}
+    La sucesión de complejos
+    \[
+      0\to\Sing_\bullet(A\cap B)\xrightarrow{\ \varphi\ }
+      \Sing_\bullet(A)\oplus\Sing_\bullet(B)\xrightarrow{\ \psi\ }
+      \CU_\bullet(X)\to0,
+    \]
+    con $\varphi(x)=(x,-x)$ y $\psi(y,z)=y+z$, es exacta.
+  \end{lemma}
+
+  \begin{proof}
+    Ambos son morfismos de complejos. El morfismo $\varphi$ es inyectivo, y
+    $\psi$ es sobreyectivo por definición de $\CU_\bullet(X)$. Además,
+    $\psi\varphi=0$, y si $\psi(y,z)=0$, entonces
+    $y=-z\in\Sing_n(A)\cap\Sing_n(B)=\Sing_n(A\cap B)$, luego
+    $(y,z)=\varphi(y)$.
+  \end{proof}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Demostración del teorema}
+
+  \begin{proof}
+    La sucesión exacta corta de complejos del lema induce una sucesión
+    exacta larga en homología
+    \[
+      \cdots\to H_n(A\cap B)\xrightarrow{\ \varphi_*\ }H_n(A)\oplus H_n(B)
+      \xrightarrow{\ \psi_*\ }H_n\bigl(\CU_\bullet(X)\bigr)
+      \xrightarrow{\ \partial\ }H_{n-1}(A\cap B)\to\cdots
+    \]
+    Por el teorema de las cadenas pequeñas, la inclusión induce
+    isomorfismos $H_n\bigl(\CU_\bullet(X)\bigr)\cong H_n(X)$. Sustituyendo,
+    obtenemos la sucesión del enunciado, y la composición de $\psi_*$ con
+    este isomorfismo es $(y,z)\mapsto k_*y+l_*z$. La sucesión termina en
+    $H_0(X)\to0$ porque los complejos son nulos en grados negativos.
+  \end{proof}
+\end{frame}
+
+\begin{frame}
+  \frametitle{El morfismo de conexión}
+
+  \begin{proposition}
+    Sea $\alpha\in H_n(X)$. Existe un ciclo $x+y$ que lo representa con
+    $x\in\Sing_n(A)$ e $y\in\Sing_n(B)$, y para cualquiera de ellos
+    \[
+      \partial\alpha=[\partial x]\in H_{n-1}(A\cap B).
+    \]
+  \end{proposition}
+
+  \begin{proof}
+    Por el teorema de las cadenas pequeñas, $\alpha$ tiene un representante
+    en $\CU_n(X)=\Sing_n(A)+\Sing_n(B)$. Por la construcción del morfismo de
+    conexión, se eleva $x+y$ a $(x,y)$, se toma su borde $(\partial
+    x,\partial y)$ y se busca su preimagen por $\varphi$. Como
+    $\partial x+\partial y=\partial(x+y)=0$, la cadena
+    $\partial x=-\partial y$ está en $\Sing_{n-1}(A\cap B)$ y
+    $\varphi(\partial x)=(\partial x,\partial y)$.
+  \end{proof}
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{Versión reducida}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{Mayer--Vietoris en homología reducida}
+
+  \begin{theorem}
+    Si además $A\cap B\neq\varnothing$, hay una sucesión exacta larga
+    \begin{multline*}
+      \cdots\to\widetilde{H}_n(A\cap B)\xrightarrow{\ \varphi_*\ }
+      \widetilde{H}_n(A)\oplus\widetilde{H}_n(B)
+      \xrightarrow{\ \psi_*\ }\widetilde{H}_n(X)\\
+      \xrightarrow{\ \partial\ }\widetilde{H}_{n-1}(A\cap B)\to\cdots
+      \to\widetilde{H}_0(X)\to0,
+    \end{multline*}
+    con $\varphi_*$, $\psi_*$ y $\partial$ dados por las mismas fórmulas.
+  \end{theorem}
+
+  \framebreak
+
+  \begin{proof}
+    Sea $\tCU_\bullet(X)$ el complejo aumentado
+    de las cadenas subordinadas. La sucesión del lema se extiende a los
+    complejos aumentados:
+    \[
+      0\to\widetilde{\Sing}_\bullet(A\cap B)\xrightarrow{\ \varphi\ }
+      \widetilde{\Sing}_\bullet(A)\oplus\widetilde{\Sing}_\bullet(B)
+      \xrightarrow{\ \psi\ }\tCU_\bullet(X)\to0.
+    \]
+    En grado $-1$ es $0\to\Z\to\Z\oplus\Z\to\Z\to0$, con $x\mapsto(x,-x)$ y
+    $(y,z)\mapsto y+z$, que es exacta. Aquí usamos que
+    $A\cap B\neq\varnothing$: en otro caso el primer término sería nulo en
+    grado $-1$.
+
+    \medskip
+
+    Su sucesión exacta larga, junto con la versión reducida del teorema de
+    las cadenas pequeñas, da la sucesión del enunciado. Termina en
+    $\widetilde{H}_0(X)\to0$ porque
+    $\widetilde{H}_{-1}(A\cap B)=0$, ya que $A\cap B\neq\varnothing$.
+  \end{proof}
 \end{frame}

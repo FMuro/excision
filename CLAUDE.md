@@ -36,7 +36,8 @@ Cada fichero de `secciones/` empieza con `\section{...}`.
 2. Subdivisión baricéntrica de un símplice; el diámetro de cada símplice
    de la subdivisión es $\le \frac{n}{n+1}$ veces el del original.
 3. Operador subdivisión $S$ en cadenas singulares; $S$ es morfismo de
-   complejos y es homotópico a la identidad.
+   complejos y es homotópico a la identidad. Iterando, $S^k$ es homotópico
+   a la identidad mediante $T_k=\sum_{j<k}TS^j$.
 4. Teorema de las cadenas pequeñas: existe una retracción
    $\rho\colon C_\bullet(X)\to C^{\cU}_\bullet(X)$ que fija $C^{\cU}_\bullet(X)$
    y una homotopía de cadenas $D$ en $C_\bullet(X)$, $\partial D+D\partial=\id-\iota\rho$,
@@ -45,7 +46,7 @@ Cada fichero de `secciones/` empieza con `\section{...}`.
 
 ## Macros (main.tex)
 
-`\N \Z \R \id \im \diam \Int \simplex{n} \Sing \cU \CU \Sd`.
+`\N \Z \R \id \im \diam \Int \simplex{n} \Sing \cU \CU \tCU \Sd`.
 No redefinir macros estándar de LaTeX (p. ej. `\int`).
 
 ## Reglas de estilo

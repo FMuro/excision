@@ -7,7 +7,7 @@
   \frametitle{Las aplicaciones lineales respetan la subdivisión}
 
   Sean $Y$ e $Y'$ convexos y $f\colon Y\to Y'$ lineal.
-  El morfismo de complejos de cadenas inducido $f_\#\colon\widetilde{C}_\bullet(Y)\to\widetilde{C}_\bullet(Y')$ preserva símplices singulares lineales, es más $f_\#([v_0,\ldots,v_n])=[f(v_0),\ldots,f(v_n)]$, así que se restringe a
+  El morfismo de complejos de cadenas inducido $f_\#\colon\widetilde{\Sing}_\bullet(Y)\to\widetilde{\Sing}_\bullet(Y')$ preserva símplices singulares lineales, es más $f_\#([v_0,\ldots,v_n])=[f(v_0),\ldots,f(v_n)]$, así que se restringe a
   \[
     f_\#\colon\widetilde{\LC}_\bullet(Y)\longrightarrow\widetilde{\LC}_\bullet(Y').
   \]
@@ -113,7 +113,7 @@
 
   \begin{proof}
     Sea $\sigma\colon\simplex{n}\to X$ con $n\geq1$ (si $n=0$ ambos miembros
-    son nulos). Como $\partial\id_{\simplex{n}}=\sum_i(-1)^i\delta_i$ con $\delta_i\colon\Delta^{n-1}\to\simplex{n}$ la inclusión de la $i$-ésima cara, que es
+    son nulos). Como $\partial\id_{\simplex{n}}=\sum_i(-1)^i\delta_i$ con $\delta_i\colon\simplex{n-1}\to\simplex{n}$ la inclusión de la $i$-ésima cara, que es
     lineal,
     \begin{align*}
       \partial\Sd\sigma
@@ -179,34 +179,6 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Los símplices de $\Sd\sigma$ son pequeños}
-
-  \begin{proposition}
-    Sea $\sigma\colon\simplex{n}\to X$. Todo símplice singular que aparece en
-    $\Sd\sigma$ con coeficiente no nulo es de la forma $\sigma\lambda$, con
-    $\lambda\colon\simplex{n}\to\simplex{n}$ un símplice singular lineal
-    tal que
-    \[
-      \lambda\in\sd(\id_{\simplex{n}}),
-      \qquad
-      \diam\lambda\leq\frac{n}{n+1}\diam\simplex{n}.
-    \]
-  \end{proposition}
-
-  \begin{proof}
-    Por definición, $\Sd\sigma=\sigma_\#\Sd\id_{\simplex{n}}$, y los símplices lineales que aparecen en
-    $\Sd\id_{\simplex{n}}$ están en $\sd(\id_{\simplex{n}})$ y cumplen la cota del diámetro,
-    por el corolario de la sección anterior.
-  \end{proof}
-
-  \medskip
-
-  Es decir, $\Sd\sigma$ está formado por restricciones de $\sigma$ a los
-  símplices de la subdivisión baricéntrica de $\simplex{n}$, que son más
-  pequeños.
-\end{frame}
-
-\begin{frame}
   \frametitle{Resumen}
 
   Para todo espacio $X$ hemos construido
@@ -215,11 +187,11 @@
     \item una homotopía de cadenas $T$ con $\partial T+T\partial=\id-\Sd$,
   \end{itemize}
   naturales en $X$, que no sacan las cadenas de ningún subespacio, y tales que
-  $\Sd\sigma$ es combinación de restricciones de $\sigma$ a símplices de
-  diámetro $\leq\frac{n}{n+1}\diam\simplex{n}$.
+  $\Sd\sigma=\sigma_\#\Sd\id_{\simplex{n}}$ para todo símplice singular
+  $\sigma\colon\simplex{n}\to X$.
 
   \medskip
 
   Siguiente paso: iterar $\Sd$ hasta que los símplices sean tan pequeños que
-  cada uno caiga en un abierto del recubrimiento.
+  cada uno caiga en algún elemento del recubrimiento.
 \end{frame}
