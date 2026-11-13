@@ -1,6 +1,6 @@
-# El teorema de excisión
+# El teorema de escisión
 
-Transparencias en LaTeX/Beamer sobre el teorema de excisión en homología
+Transparencias en LaTeX/Beamer sobre el teorema de escisión en homología
 singular, vía el teorema de las cadenas pequeñas (Universidad de Sevilla).
 
 ## Compilación

@@ -1,6 +1,6 @@
-# CLAUDE.md — El teorema de excisión
+# CLAUDE.md — El teorema de escisión
 
-Transparencias en LaTeX/Beamer sobre el teorema de excisión en homología
+Transparencias en LaTeX/Beamer sobre el teorema de escisión en homología
 singular (Universidad de Sevilla). Referencia de base: Hatcher,
 *Algebraic Topology*, §2.1, pero la demostración sigue un enfoque propio
 (ver «Plan»).
@@ -42,7 +42,7 @@ Cada fichero de `secciones/` empieza con `\section{...}`.
    $\rho\colon C_\bullet(X)\to C^{\cU}_\bullet(X)$ que fija $C^{\cU}_\bullet(X)$
    y una homotopía de cadenas $D$ en $C_\bullet(X)$, $\partial D+D\partial=\id-\iota\rho$,
    que se anula sobre $C^{\cU}_\bullet(X)$.
-5. Excisión y Mayer–Vietoris como consecuencias.
+5. Escisión y Mayer–Vietoris como consecuencias.
 
 ## Macros (main.tex)
 
