@@ -1,0 +1,116 @@
+\section{Versiones para $CW$-complejos}
+
+% ------------------------------------------------------------------------
+\subsection{Subcomplejos}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{Subespacios con buenos entornos}
+
+  En esta sección, $A,B\subseteq X$ son subespacios con $X=A\cup B$ para los
+  que existen abiertos $U\supseteq A$ y $V\supseteq B$ tales que
+  \[
+    A\subseteq U,\qquad B\subseteq V,\qquad A\cap B\subseteq U\cap V
+  \]
+  son retractos por deformación. Nótese que $X\supseteq U\cup V\supseteq A\cup B=X$,
+  luego $\{U,V\}$ es un recubrimiento de $X$.
+
+  \framebreak
+
+  El caso principal es el de los $CW$-complejos.
+
+  \begin{proposition}[Hatcher, Prop.~A.5]
+    Sea $X$ un $CW$-complejo. A cada subcomplejo $A\subseteq X$ se le puede
+    asociar un entorno abierto $N(A)\subseteq X$ de modo que
+    \begin{enumerate}
+      \item $A$ es un retracto por deformación de $N(A)$;
+      \item $N(A)\cap N(B)=N(A\cap B)$ para cualesquiera subcomplejos $A,B$.
+    \end{enumerate}
+  \end{proposition}
+
+  Por tanto, si $X$ es un $CW$-complejo y
+  $A,B\subseteq X$ son subcomplejos con $X=A\cup B$, los abiertos $U=N(A)$
+  y $V=N(B)$ cumplen la hipótesis, ya que $U\cap V=N(A\cap B)$.
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{Reemplazar $A$ y $B$ por $U$ y $V$}
+
+  Como los retractos de deformación son equivalencias homotópicas, el siguiente resultado es inmediato.
+
+  \begin{lemma}
+    Sean $A,B\subseteq X$ con $X=A\cup B$, y $U\supseteq A$, $V\supseteq B$
+    abiertos como antes. Las inclusiones inducen isomorfismos
+    \begin{gather*}
+      H_n(A)\cong H_n(U),\qquad H_n(B)\cong H_n(V),\qquad
+      H_n(A\cap B)\cong H_n(U\cap V),\\
+      H_n(X,A)\cong H_n(X,U),\qquad H_n(B,A\cap B)\cong H_n(V,U\cap V),
+    \end{gather*}
+    y lo mismo en homología reducida.
+  \end{lemma}
+
+\end{frame}
+
+% ------------------------------------------------------------------------
+\subsection{Escisión y Mayer--Vietoris}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{Escisión}
+
+  \begin{theorem}
+    Sean $A,B\subseteq X$ como antes; por ejemplo, subcomplejos de un
+    $CW$-complejo con $X=A\cup B$. Entonces la inclusión de pares
+    $(B,A\cap B)\hookrightarrow(X,A)$ induce isomorfismos
+    \[
+      H_n(B,A\cap B)\cong H_n(X,A)
+    \]
+    para todo $n$.
+  \end{theorem}
+
+  \framebreak
+
+  \begin{proof}
+    Las inclusiones de pares dan un diagrama conmutativo
+    \[
+      \begin{tikzcd}[ampersand replacement=\&]
+        H_n(B,A\cap B)\arrow[r]\arrow{d}[swap]{\cong}
+          \&H_n(X,A)\arrow{d}{\cong}\\
+        H_n(V,U\cap V)\arrow{r}{\cong}\&H_n(X,U)
+      \end{tikzcd}
+    \]
+    Las flechas verticales son isomorfismos por el lema anterior. La
+    inferior lo es por el teorema de escisión aplicado al recubrimiento
+    abierto $\{U,V\}$. Por tanto la
+    superior también es un isomorfismo.
+  \end{proof}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{Mayer--Vietoris}
+
+  \begin{theorem}
+    Sean $A,B\subseteq X$ como antes; por ejemplo, subcomplejos de un
+    $CW$-complejo con $X=A\cup B$. Con las inclusiones $i_A,i_B,j_A,j_B$ de
+    antes, existe una sucesión exacta larga
+    \begin{multline*}
+      \cdots\to H_n(A\cap B)\xrightarrow{\left(\begin{smallmatrix}{i_A}_*\\-{i_B}_*\end{smallmatrix}\right)}H_n(A)\oplus H_n(B)
+      \xrightarrow{\left(\begin{smallmatrix}{j_A}_* & {j_B}_*\end{smallmatrix}\right)}H_n(X)\\
+      \xrightarrow{\ \delta\ }H_{n-1}(A\cap B)\to\cdots\to H_0(X)\to0.
+    \end{multline*}
+    Si además $A\cap B\neq\varnothing$, lo mismo vale en homología reducida.
+  \end{theorem}
+
+  \framebreak
+
+  \begin{proof}
+    Como $\{U,V\}$ es un recubrimiento abierto de $X$, tenemos la sucesión
+    de Mayer--Vietoris de $U$ y $V$. Por el
+    lema anterior, las inclusiones inducen isomorfismos
+    \[
+      H_n(A\cap B)\cong H_n(U\cap V),\qquad
+      H_n(A)\cong H_n(U),\qquad
+      H_n(B)\cong H_n(V),
+    \]
+    también en homología reducida, 
+    luego el teorema se sigue.
+  \end{proof}
+\end{frame}

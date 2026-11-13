@@ -43,6 +43,12 @@ Cada fichero de `secciones/` empieza con `\section{...}`.
    y una homotopía de cadenas $D$ en $C_\bullet(X)$, $\partial D+D\partial=\id-\iota\rho$,
    que se anula sobre $C^{\cU}_\bullet(X)$.
 5. Escisión y Mayer–Vietoris como consecuencias.
+6. Versiones sin interiores: $X=A\cup B$ con abiertos $U\supseteq A$,
+   $V\supseteq B$ tales que $A$, $B$, $A\cap B$ son retractos por deformación
+   de $U$, $V$, $U\cap V$. Las inclusiones inducen isomorfismos en homología
+   (absoluta, relativa y reducida) al cambiar $A,B$ por $U,V$, y escisión y
+   Mayer–Vietoris se deducen de las del recubrimiento abierto $\{U,V\}$.
+   Caso principal: subcomplejos de un $CW$-complejo (Hatcher, Prop. A.5).
 
 ## Macros (main.tex)
 
