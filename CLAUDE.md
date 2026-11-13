@@ -49,6 +49,15 @@ Cada fichero de `secciones/` empieza con `\section{...}`.
 `\N \Z \R \id \im \diam \Int \simplex{n} \Sing \cU \CU \tCU \Sd`.
 No redefinir macros estándar de LaTeX (p. ej. `\int`).
 
+## Notación
+
+- En Mayer–Vietoris, las inclusiones son $i_A\colon A\cap B\hookrightarrow A$,
+  $i_B\colon A\cap B\hookrightarrow B$, $j_A\colon A\hookrightarrow X$,
+  $j_B\colon B\hookrightarrow X$; los morfismos inducidos se denotan con
+  subíndice $\#$ en cadenas y $*$ en homología.
+- Los morfismos entre sumas directas se escriben en notación matricial
+  y se ponen directamente sobre las flechas, sin darles nombre.
+
 ## Reglas de estilo
 
 - Español. Rigor alto; lenguaje natural, ni telegráfico ni prolijo.

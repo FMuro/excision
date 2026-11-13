@@ -36,6 +36,11 @@
     para todo $n$.
   \end{theorem}
 
+  \medskip
+
+  La hipótesis dice
+  exactamente que $\cU=\{A,B\}$ es un recubrimiento de $X$.
+
   \framebreak
 
   \begin{proposition}
@@ -55,8 +60,7 @@
 
   \medskip
 
-  Demostraremos, por tanto, la segunda forma. La hipótesis dice
-  exactamente que $\cU=\{A,B\}$ es un recubrimiento de $X$.
+  Demostraremos, por tanto, la segunda forma.
 \end{frame}
 
 % ------------------------------------------------------------------------
@@ -69,7 +73,7 @@
   $\CU_\bullet(X)=\Sing_\bullet(A)+\Sing_\bullet(B)$.
 
   \begin{lemma}
-    La inclusión induce un isomorfismo de complejos
+    La inclusión $\Sing_\bullet(B)\subset \CU_\bullet(X)$ induce un isomorfismo de complejos
     \[
       \Sing_\bullet(B)/\Sing_\bullet(A\cap B)
       \xrightarrow{\ \cong\ }
@@ -78,11 +82,13 @@
   \end{lemma}
 
   \begin{proof}
-    Es el segundo teorema de isomorfía,
-    $B'/(A'\cap B')\cong(A'+B')/A'$, aplicado en cada grado a
+    Es el segundo teorema de isomorfía, según el cual, dado un grupo abeliano $G$ y subgrupos $A',B'\subseteq G$, la inclusión $B'\subset A'+B'$ induce un isomorfismo
+    \[
+      \frac{B'}{A'\cap B'}\cong\frac{A'+B'}{A'},
+    \]
+    aplicado en cada grado a
     $A'=\Sing_n(A)$ y $B'=\Sing_n(B)$, teniendo en cuenta que
-    $\Sing_n(A)\cap\Sing_n(B)=\Sing_n(A\cap B)$. El isomorfismo es inducido
-    por la inclusión, luego conmuta con el borde.
+    $\Sing_n(A)\cap\Sing_n(B)=\Sing_n(A\cap B)$. 
   \end{proof}
 \end{frame}
 
@@ -90,11 +96,11 @@
   \frametitle{Segundo paso: cadenas pequeñas relativas}
 
   \begin{lemma}
-    La inclusión induce isomorfismos en homología
+    La inclusión $\CU_\bullet(X)\subset\Sing_\bullet(X)$ induce isomorfismos en homología
     \[
       H_n\bigl(\CU_\bullet(X)/\Sing_\bullet(A)\bigr)
       \xrightarrow{\ \cong\ }
-      H_n\bigl(\Sing_\bullet(X)/\Sing_\bullet(A)\bigr).
+      H_n\bigl(\Sing_\bullet(X)/\Sing_\bullet(A)\bigr)=H_n(X,A).
     \]
   \end{lemma}
 
@@ -118,7 +124,7 @@
       \qquad
       \partial\bar D+\bar D\partial=\id-\bar\iota\bar\rho.
     \]
-    Así, $\bar\iota$ es una equivalencia de homotopía de cadenas con inversa
+    Así, el morfismo $\bar\iota$ inducido por la inclusión $\CU_\bullet(X)\subset\Sing_\bullet(X)$ es una equivalencia de homotopía de cadenas con inversa
     $\bar\rho$, y por tanto induce isomorfismos en homología.
   \end{proof}
 \end{frame}
@@ -128,7 +134,7 @@
 
   \begin{proof}[Demostración de la excisión]
     La inclusión $\Sing_\bullet(B,A\cap B)\to\Sing_\bullet(X,A)$ inducida por
-    $(B,A\cap B)\hookrightarrow(X,A)$ es la composición
+    $(B,A\cap B)\hookrightarrow(X,A)$ es la composición de los morfismos de complejos de cadenas considerados en los dos lemas anteriores:
     \[
       \Sing_\bullet(B)/\Sing_\bullet(A\cap B)
       \xrightarrow{\ \cong\ }
@@ -136,39 +142,11 @@
       \xrightarrow{\ \bar\iota\ }
       \Sing_\bullet(X)/\Sing_\bullet(A).
     \]
-    El primer morfismo es un isomorfismo de complejos por el primer paso, y
-    el segundo induce isomorfismos en homología por el segundo paso. Por
-    tanto, la composición induce isomorfismos
-    $H_n(B,A\cap B)\cong H_n(X,A)$.
-  \end{proof}
-\end{frame}
-
-% ------------------------------------------------------------------------
-\subsection{Versión reducida}
-
-\begin{frame}
-  \frametitle{Excisión en homología reducida}
-
-  Para $A\subseteq X$, la homología relativa reducida
-  $\widetilde{H}_n(X,A)$ es la homología de
-  $\widetilde{\Sing}_\bullet(X)/\widetilde{\Sing}_\bullet(A)$.
-
-  \begin{corollary}
-    En las hipótesis de la excisión, si además $A\setminus Z\neq\varnothing$,
-    la inclusión induce isomorfismos
+    El primer morfismo es un isomorfismo de complejos por el primer lema, y
+    el segundo induce isomorfismos en homología por el segundo. Por
+    tanto, la composición induce isomorfismos en homología, es decir,
     \[
-      \widetilde{H}_n(X\setminus Z,A\setminus Z)\cong\widetilde{H}_n(X,A)
+      H_n(B,A\cap B)\cong H_n(X,A).
     \]
-    para todo $n$.
-  \end{corollary}
-
-  \begin{proof}
-    Si $A\neq\varnothing$, los complejos aumentados de $X$ y de $A$ coinciden
-    en grado $-1$, luego
-    $\widetilde{\Sing}_\bullet(X)/\widetilde{\Sing}_\bullet(A)
-    =\Sing_\bullet(X)/\Sing_\bullet(A)$ y
-    $\widetilde{H}_n(X,A)=H_n(X,A)$. Lo mismo vale para el par
-    $(X\setminus Z,A\setminus Z)$, pues $A\setminus Z\neq\varnothing$. Basta
-    aplicar el teorema de excisión.
   \end{proof}
 \end{frame}
