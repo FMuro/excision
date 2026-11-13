@@ -6,9 +6,8 @@
 \begin{frame}
   \frametitle{El teorema de excisión}
 
-  Para $A\subseteq X$, las cadenas relativas son
-  $\Sing_\bullet(X,A)=\Sing_\bullet(X)/\Sing_\bullet(A)$, y la homología
-  relativa es $H_n(X,A)=H_n\bigl(\Sing_\bullet(X,A)\bigr)$.
+  Para $A\subseteq X$, la homología relativa es
+  $H_n(X,A)=H_n\bigl(\Sing_\bullet(X)/\Sing_\bullet(A)\bigr)$.
 
   \begin{theorem}[Excisión]
     Sean $Z\subseteq A\subseteq X$ con $\overline{Z}\subseteq\Int A$.
@@ -73,7 +72,7 @@
   $\CU_\bullet(X)=\Sing_\bullet(A)+\Sing_\bullet(B)$.
 
   \begin{lemma}
-    La inclusión $\Sing_\bullet(B)\subset \CU_\bullet(X)$ induce un isomorfismo de complejos
+    La inclusión $\Sing_\bullet(B)\subseteq\CU_\bullet(X)$ induce un isomorfismo de complejos
     \[
       \Sing_\bullet(B)/\Sing_\bullet(A\cap B)
       \xrightarrow{\ \cong\ }
@@ -82,7 +81,7 @@
   \end{lemma}
 
   \begin{proof}
-    Es el segundo teorema de isomorfía, según el cual, dado un grupo abeliano $G$ y subgrupos $A',B'\subseteq G$, la inclusión $B'\subset A'+B'$ induce un isomorfismo
+    Es el segundo teorema de isomorfía, según el cual, dado un grupo abeliano $G$ y subgrupos $A',B'\subseteq G$, la inclusión $B'\subseteq A'+B'$ induce un isomorfismo
     \[
       \frac{B'}{A'\cap B'}\cong\frac{A'+B'}{A'},
     \]
@@ -96,7 +95,7 @@
   \frametitle{Segundo paso: cadenas pequeñas relativas}
 
   \begin{lemma}
-    La inclusión $\CU_\bullet(X)\subset\Sing_\bullet(X)$ induce isomorfismos en homología
+    La inclusión $\CU_\bullet(X)\subseteq\Sing_\bullet(X)$ induce isomorfismos en homología
     \[
       H_n\bigl(\CU_\bullet(X)/\Sing_\bullet(A)\bigr)
       \xrightarrow{\ \cong\ }
@@ -113,7 +112,7 @@
       \bar\iota\colon\CU_\bullet(X)/\Sing_\bullet(A)
         \rightleftarrows\Sing_\bullet(X)/\Sing_\bullet(A)\colon\bar\rho,
       \qquad
-      \bar D\colon\Sing_n(X,A)\to\Sing_{n+1}(X,A).
+      \bar D\colon\Sing_n(X)/\Sing_n(A)\to\Sing_{n+1}(X)/\Sing_{n+1}(A).
     \]
 
     \framebreak
@@ -124,7 +123,7 @@
       \qquad
       \partial\bar D+\bar D\partial=\id-\bar\iota\bar\rho.
     \]
-    Así, el morfismo $\bar\iota$ inducido por la inclusión $\CU_\bullet(X)\subset\Sing_\bullet(X)$ es una equivalencia de homotopía de cadenas con inversa
+    Así, el morfismo $\bar\iota$ inducido por la inclusión $\CU_\bullet(X)\subseteq\Sing_\bullet(X)$ es una equivalencia de homotopía de cadenas con inversa
     $\bar\rho$, y por tanto induce isomorfismos en homología.
   \end{proof}
 \end{frame}
@@ -133,7 +132,9 @@
   \frametitle{Conclusión}
 
   \begin{proof}[Demostración de la excisión]
-    La inclusión $\Sing_\bullet(B,A\cap B)\to\Sing_\bullet(X,A)$ inducida por
+    El morfismo
+    $\Sing_\bullet(B)/\Sing_\bullet(A\cap B)\to\Sing_\bullet(X)/\Sing_\bullet(A)$
+    inducido por
     $(B,A\cap B)\hookrightarrow(X,A)$ es la composición de los morfismos de complejos de cadenas considerados en los dos lemas anteriores:
     \[
       \Sing_\bullet(B)/\Sing_\bullet(A\cap B)

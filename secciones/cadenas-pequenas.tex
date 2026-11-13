@@ -35,7 +35,7 @@
   \frametitle{El número de subdivisiones de un símplice}
 
   Sea $\sigma\colon\simplex{n}\to X$ un símplice singular. Por la
-  proposición de Lebesgue, existe un menor entero $k(\sigma)\geq0$ tal que
+  proposición de subdivisión suficiente, existe un menor entero $k(\sigma)\geq0$ tal que
   $\Sd^i\sigma\in\CU_n(X)$ para todo $i\geq k(\sigma)$.
 
   \begin{definition}
@@ -144,8 +144,14 @@
   \end{lemma}
 
   \begin{proof}
-    Sea $\sigma\colon\simplex{n}\to X$ un símplice singular, $m=m(\sigma)$
-    y $m_j=m(\partial_j\sigma)$, que cumplen $m_j\leq m$. Por el lema de iteración de homotopías,
+    Sea $\sigma\colon\simplex{n}\to X$ un símplice singular. Si $n=0$, la
+    imagen de $\sigma$ es un punto, que está en algún $U_i$, luego
+    $\sigma\in\CU_0(X)$ y $\rho\sigma=\sigma$ por el lema anterior.
+
+    \medskip
+
+    Si $n\geq1$, sean $m=m(\sigma)$ y $m_j=m(\partial_j\sigma)$, que cumplen
+    $m_j\leq m$. Por el lema de iteración de homotopías,
     \[
       \partial D\sigma=\partial T_m\sigma
       =\sigma-\Sd^m\sigma-T_m\partial\sigma.

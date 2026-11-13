@@ -60,7 +60,7 @@
   \frametitle{Descripción mediante los subespacios}
 
   Para $A\subseteq X$ identificamos $\Sing_\bullet(A)$ con el subcomplejo de
-  $\Sing_\bullet(X)$ generado por los símplices singulares $\sigma\colon\simplex{n}\to X$ con imagen $\sigma(\simplex{n})\subset A$.
+  $\Sing_\bullet(X)$ generado por los símplices singulares $\sigma\colon\simplex{n}\to X$ con imagen $\sigma(\simplex{n})\subseteq A$.
 
   \begin{proposition}
     Para todo $n\geq0$, se tiene que
@@ -164,7 +164,7 @@
   $\varepsilon>0$ tal que todo subconjunto de $K$ de diámetro
   $<\varepsilon$ está contenido en algún elemento de $\mathcal{V}$.
 
-  \begin{proposition}
+  \begin{proposition}[de subdivisión suficiente]
     Sea $\cU$ un recubrimiento de $X$ y $\sigma\colon\simplex{n}\to X$ un
     símplice singular. Existe $k\geq0$ tal que $\Sd^m\sigma\in\CU_n(X)$
     para todo $m\geq k$.
@@ -182,15 +182,21 @@
 
     \medskip
 
-    Sea $m\geq k$. Por definición,
-    $\Sd^m\sigma=\sigma_\#\Sd^m\id_{\simplex{n}}$.
-    El operador $\Sd$ en $\LC_\bullet(\simplex{n})$ cumple que
-    $\Sd^m\id_{\simplex{n}}$ es combinación de símplices singulares lineales
-    $\lambda\in\sd^m(\id_{\simplex{n}})$.
-    Cada uno de ellos tiene diámetro $<\varepsilon$, luego está
-    contenido en algún $\sigma^{-1}(U_i)$, y por tanto
-    $(\sigma\lambda)(\simplex{n})\subseteq U_i$. Así,
-    $\Sd^m\sigma=\sigma_\#\Sd^m\id_{\simplex{n}}$ es combinación de símplices en $\sigma\lambda$ y por tanto $\Sd^m\sigma\in\CU_n(X)$.
+    Por naturalidad,
+    $\Sd^m\sigma=\Sd^m\sigma_\#\id_{\simplex{n}}=\sigma_\#\Sd^m\id_{\simplex{n}}$.
+    Además, $\Sd^m\id_{\simplex{n}}$ es combinación de símplices singulares
+    lineales $\lambda\in\sd^m(\simplex{n})$. Lo vemos por inducción en $m$:
+    si $m=0$ es obvio, y si $\Sd^{m-1}\id_{\simplex{n}}$ es combinación de
+    elementos $\lambda\in\sd^{m-1}(\simplex{n})$, cada $\Sd\lambda$ es
+    combinación de elementos de $\sd(\lambda)\subseteq\sd^m(\simplex{n})$.
+
+    \medskip
+
+    Sea $m\geq k$. Cada $\lambda$ anterior tiene diámetro $<\varepsilon$,
+    luego está contenido en algún $\sigma^{-1}(\Int U_i)$, y por tanto
+    $(\sigma\lambda)(\simplex{n})\subseteq U_i$. Así, $\Sd^m\sigma$ es
+    combinación de símplices singulares $\sigma\lambda$ subordinados a
+    $\cU$, es decir, $\Sd^m\sigma\in\CU_n(X)$.
   \end{proof}
 \end{frame}
 

@@ -46,7 +46,7 @@ Cada fichero de `secciones/` empieza con `\section{...}`.
 
 ## Macros (main.tex)
 
-`\N \Z \R \id \im \diam \Int \simplex{n} \Sing \cU \CU \tCU \Sd`.
+`\N \Z \R \id \im \diam \Int \simplex{n} \Sing \LC \cU \CU \tCU \Sd \sd`.
 No redefinir macros estándar de LaTeX (p. ej. `\int`).
 
 ## Notación
