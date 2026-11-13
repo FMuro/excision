@@ -7,7 +7,7 @@
   \frametitle{El cono sobre una cadena lineal}
 
   \begin{definition}
-    Sea $b\in Y$. El \alert{cono} de vértice $b$ es el homomorfismo
+    Sea $b\in Y$. El \alert{operador cono} de vértice $b$ es el homomorfismo
     \[
       b\colon\widetilde{\LC}_n(Y)\longrightarrow\widetilde{\LC}_{n+1}(Y),
       \qquad
@@ -25,7 +25,7 @@
 \begin{frame}
   \frametitle{El borde de un cono}
 
-  \begin{lemma}
+  \begin{lemma}[del cono]
     En $\widetilde{\LC}_\bullet(Y)$ se tiene $\partial b+b\partial=\id$.
   \end{lemma}
 
@@ -79,8 +79,8 @@
   \begin{columns}[c]
     \begin{column}{0.52\textwidth}
       \begin{itemize}
-        \item $n=0$: $\Sd[v]=[v]\bigl(\Sd[\;]\bigr)=[v]$. Es la identidad.
-        \item $n=1$: como $\partial[v_0,v_1]=[v_1]-[v_0]$,
+        \item Si $n=0$, entonces $\Sd[v]=[v]\bigl(\Sd[\;]\bigr)=[v]$, es decir, $\Sd$ es la identidad.
+        \item Si $n=1$, como $\partial[v_0,v_1]=[v_1]-[v_0]$,
           \[
             \Sd[v_0,v_1]=[b,v_1]-[b,v_0],
           \]
@@ -112,7 +112,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{$\Sd\sigma$ es una combinación de $\sd(\sigma)$}
+  \frametitle{La cadena $\Sd\sigma$ es una combinación de $\sd(\sigma)$}
 
   \begin{lemma}
     Sea $\sigma$ un símplice singular lineal de dimensión $n\geq0$. Todo
@@ -127,7 +127,7 @@
 
     Si $n\geq1$,
     \[
-      \Sd\sigma=b_\sigma\Bigl(\sum_{i=0}^n(-1)^i\,\Sd(\partial_i\sigma)\Bigr).
+      \Sd\sigma=b_\sigma\bigl(\Sd(\partial\sigma)\bigr)=b_\sigma\Bigl(\sum_{i=0}^n(-1)^i\,\Sd(\partial_i\sigma)\Bigr).
     \]
     Por hipótesis de inducción, $\Sd(\partial_i\sigma)$ es combinación de
     símplices $[w_0,\ldots,w_{n-1}]\in\sd(\partial_i\sigma)$, y el cono los
@@ -162,10 +162,10 @@
 \end{frame}
 
 % ------------------------------------------------------------------------
-\subsection{$\Sd$ es un morfismo de complejos}
+\subsection{El operador $\Sd$ es un morfismo de complejos}
 
 \begin{frame}
-  \frametitle{$\Sd$ conmuta con el borde}
+  \frametitle{El operador $\Sd$ conmuta con el borde}
 
   \begin{proposition}
     El operador $\Sd\colon\widetilde{\LC}_\bullet(Y)\to\widetilde{\LC}_\bullet(Y)$ es un
@@ -184,6 +184,7 @@
     \[
       \partial\Sd\sigma
       =\partial b_\sigma\bigl(\Sd\partial\sigma\bigr)
+      =(\id-b_\sigma\partial)\bigl(\Sd\partial\sigma\bigr)
       =\Sd\partial\sigma-b_\sigma\bigl(\partial\Sd\partial\sigma\bigr).
     \]
     Por hipótesis de inducción,
@@ -193,7 +194,7 @@
 \end{frame}
 
 % ------------------------------------------------------------------------
-\subsection{$\Sd$ es homotópico a la identidad}
+\subsection{El operador $\Sd$ es homotópico a la identidad}
 
 \begin{frame}[allowframebreaks, t]
   \frametitle{La homotopía entre $\Sd$ y la identidad}
@@ -224,27 +225,32 @@
     Sea $n\geq0$ y supongamos el resultado en grado $n-1$. Aplicado a
     $\partial\sigma$ da
     \[
-      \partial T\partial\sigma
+      \partial T(\partial\sigma)
+      =(\id-\Sd-T\partial)(\partial\sigma)
       =\partial\sigma-\Sd\partial\sigma-T\partial\partial\sigma
       =\partial\sigma-\Sd\partial\sigma,
     \]
-    luego
+    luego, despejando, se obtiene
     \[
       \partial\bigl(\sigma-T\partial\sigma\bigr)
+      =\partial\sigma-\partial T\partial\sigma
       =\Sd\partial\sigma.
     \]
     Por el lema del cono,
     \begin{align*}
       \partial T\sigma
       &=\partial b_\sigma\bigl(\sigma-T\partial\sigma\bigr)\\
+      &=(\id - b_\sigma\partial)\bigl(\sigma-T\partial\sigma\bigr)\\
       &=\sigma-T\partial\sigma
         -b_\sigma\partial\bigl(\sigma-T\partial\sigma\bigr)\\
       &=\sigma-T\partial\sigma-b_\sigma\Sd\partial\sigma\\
       &=\sigma-T\partial\sigma-\Sd\sigma.
     \end{align*}
-    Es decir, $\partial T\sigma+T\partial\sigma=\sigma-\Sd\sigma$.
+    Es decir, despejando, $\partial T\sigma+T\partial\sigma=\sigma-\Sd\sigma$.
   \end{proof}
 \end{frame}
+
+
 
 \begin{frame}
   \frametitle{Resumen}

@@ -4,34 +4,40 @@
 \subsection{Naturalidad en el caso lineal}
 
 \begin{frame}[allowframebreaks]
-  \frametitle{Las aplicaciones afines respetan la subdivisión lineal}
+  \frametitle{Las aplicaciones lineales respetan la subdivisión}
 
-  Sea $f\colon Y\to Y'$ la restricción de una aplicación afín entre convexos.
-  Entonces $f[v_0,\ldots,v_n]=[f(v_0),\ldots,f(v_n)]$, así que $f$ induce
+  Sean $Y$ e $Y'$ convexos y $f\colon Y\to Y'$ lineal.
+  El morfismo de complejos de cadenas inducido $f_\#\colon\widetilde{C}_\bullet(Y)\to\widetilde{C}_\bullet(Y')$ preserva símplices singulares lineales, es más $f_\#([v_0,\ldots,v_n])=[f(v_0),\ldots,f(v_n)]$, así que se restringe a
   \[
-    f_\#\colon\widetilde{\LC}_\bullet(Y)\to\widetilde{\LC}_\bullet(Y'),
-    \qquad f_\#[\;]=[\;],
+    f_\#\colon\widetilde{\LC}_\bullet(Y)\longrightarrow\widetilde{\LC}_\bullet(Y').
   \]
-  que conmuta con el borde y cumple $f_\#(b\alpha)=f(b)\,f_\#\alpha$ para
-  $b\in Y$. Además, $f(b_\sigma)=b_{f_\#\sigma}$ para todo símplice singular
-  lineal $\sigma$, pues $f$ conserva las combinaciones afines.
+  Este morfismo es compatible con el operador cono en el siguiente sentido
+  \[f_\#b=f(b)f_\#,\]
+  ya que dado un símplice singular lineal $[w_0,\ldots,w_n]$, se tiene que
+  \begin{align*}
+    f_\#b[w_0,\ldots,w_n]&=f_\#[b,w_0,\ldots,w_n]
+      =[f(b),f(w_0),\ldots,f(w_n)]\\
+    &=f(b)[f(w_0),\ldots,f(w_n)]
+      =f(b)f_\#[w_0,\ldots,w_n].
+  \end{align*}
+  Además, por linealidad de $f$, se tiene que $f(b_\sigma)=b_{f_\#\sigma}$ para todo símplice singular
+  lineal $\sigma$.
 
   \framebreak
 
-  \begin{lemma}
-    $f_\#\Sd=\Sd f_\#$ y $f_\#T=Tf_\#$ en $\widetilde{\LC}_\bullet(Y)$.
+  \begin{lemma}[de naturalidad lineal]
+    En $\widetilde{\LC}_\bullet(Y)$, se tiene que $f_\#\Sd=\Sd f_\#$ y $f_\#T=Tf_\#$.
   \end{lemma}
 
   \begin{proof}
     Por inducción en $n\geq-1$ sobre un símplice singular lineal $\sigma$ de
-    dimensión $n$; en grado $-1$ es trivial. Si $n\geq0$,
+    dimensión $n$; en grado $-1$ es trivial pues $S=\id$ y $Y=0$. Si $n\geq0$, usando la hipótesis de inducción y que $f_\#$ conmuta con $\partial$ deducimos que
     \begin{align*}
-      f_\#\Sd\sigma&=f(b_\sigma)\,f_\#\Sd\partial\sigma
+      f_\#\Sd\sigma&=f_\#b_\sigma\Sd\partial\sigma=f(b_\sigma)\,f_\#\Sd\partial\sigma
         =b_{f_\#\sigma}\,\Sd\partial f_\#\sigma=\Sd f_\#\sigma,\\
-      f_\#T\sigma&=f(b_\sigma)\,f_\#(\sigma-T\partial\sigma)
-        =b_{f_\#\sigma}\bigl(f_\#\sigma-T\partial f_\#\sigma\bigr)=Tf_\#\sigma,
+      f_\#T\sigma&=f_\#b_\sigma(\sigma-T\partial\sigma)=f(b_\sigma)\,f_\#(\sigma-T\partial\sigma)
+        =b_{f_\#\sigma}\bigl(f_\#\sigma-T\partial f_\#\sigma\bigr)=Tf_\#\sigma.
     \end{align*}
-    usando la hipótesis de inducción y que $f_\#$ conmuta con $\partial$.
   \end{proof}
 \end{frame}
 
@@ -41,17 +47,18 @@
 \begin{frame}
   \frametitle{El operador subdivisión en cadenas singulares}
 
-  Sea $\iota_n=\id_{\simplex{n}}=[e_0,\ldots,e_n]\in\LC_n(\simplex{n})$. El
-  símplice $\simplex{n}\subseteq\R^{n+1}$ es convexo, luego ya tenemos
-  $\Sd\iota_n\in\LC_n(\simplex{n})$ y $T\iota_n\in\LC_{n+1}(\simplex{n})$.
+  La identidad $\id_{\simplex{n}}=[e_0,\ldots,e_n]$ es un símplice singular
+  lineal en el convexo $\simplex{n}\subseteq\R^{n+1}$, luego ya tenemos
+  $\Sd\id_{\simplex{n}}\in\LC_n(\simplex{n})$ y
+  $T\id_{\simplex{n}}\in\LC_{n+1}(\simplex{n})$.
 
   \begin{definition}
     Sea $X$ un espacio topológico y $\sigma\colon\simplex{n}\to X$ un
     símplice singular. Definimos
     \[
-      \Sd\sigma=\sigma_\#(\Sd\iota_n)\in\Sing_n(X),
+      \Sd\sigma=\sigma_\#(\Sd\id_{\simplex{n}})\in\Sing_n(X),
       \qquad
-      T\sigma=\sigma_\#(T\iota_n)\in\Sing_{n+1}(X),
+      T\sigma=\sigma_\#(T\id_{\simplex{n}})\in\Sing_{n+1}(X),
     \]
     y extendemos por linealidad a
     $\Sd\colon\Sing_n(X)\to\Sing_n(X)$ y $T\colon\Sing_n(X)\to\Sing_{n+1}(X)$.
@@ -66,7 +73,7 @@
 \begin{frame}
   \frametitle{Compatibilidad con el caso lineal}
 
-  \begin{lemma}
+  \begin{lemma}[de compatibilidad]
     Sea $\sigma\colon\simplex{n}\to X$ un símplice singular y
     $\lambda\colon\simplex{m}\to\simplex{n}$ un símplice singular lineal.
     Entonces
@@ -80,12 +87,12 @@
   \end{lemma}
 
   \begin{proof}
-    Como $\lambda$ es afín y $\lambda=\lambda_\#\iota_m$, por el lema de
-    naturalidad lineal
+    Como $\lambda$ es la restricción de una aplicación lineal y
+    $\lambda=\lambda_\#\id_{\simplex{m}}$, por el lema de naturalidad lineal
     \[
-      \Sd(\sigma\lambda)=(\sigma\lambda)_\#\Sd\iota_m
-      =\sigma_\#\lambda_\#\Sd\iota_m
-      =\sigma_\#\Sd\lambda_\#\iota_m
+      \Sd(\sigma\lambda)=(\sigma\lambda)_\#\Sd\id_{\simplex{m}}
+      =\sigma_\#\lambda_\#\Sd\id_{\simplex{m}}
+      =\sigma_\#\Sd\lambda_\#\id_{\simplex{m}}
       =\sigma_\#\Sd\lambda,
     \]
     y análogamente para $T$.
@@ -98,48 +105,52 @@
 \subsection{Propiedades}
 
 \begin{frame}
-  \frametitle{$\Sd$ es un morfismo de complejos}
+  \frametitle{El operador $\Sd$ es un morfismo de complejos}
 
   \begin{proposition}
-    $\Sd\colon\Sing_\bullet(X)\to\Sing_\bullet(X)$ es un morfismo de complejos.
+    La aplicación $\Sd\colon\Sing_\bullet(X)\to\Sing_\bullet(X)$ es un morfismo de complejos.
   \end{proposition}
 
   \begin{proof}
     Sea $\sigma\colon\simplex{n}\to X$ con $n\geq1$ (si $n=0$ ambos miembros
-    son nulos). Como $\partial\iota_n=\sum_i(-1)^i\delta_i$ con $\delta_i$
-    lineales,
-    \[
+    son nulos). Como $\partial\id_{\simplex{n}}=\sum_i(-1)^i\delta_i$ con $\delta_i\colon\Delta^{n-1}\to\simplex{n}$ la inclusión de la $i$-ésima cara, que es
+    lineal,
+    \begin{align*}
       \partial\Sd\sigma
-      =\sigma_\#\partial\Sd\iota_n
-      =\sigma_\#\Sd\partial\iota_n
-      =\sum_{i=0}^n(-1)^i\,\sigma_\#\Sd\delta_i
+      &=\partial\sigma_\#\Sd\id_{\simplex{n}}
+      =\sigma_\#\partial\Sd\id_{\simplex{n}}
+      =\sigma_\#\Sd\partial\id_{\simplex{n}}\\
+      &=\sum_{i=0}^n(-1)^i\,\sigma_\#\Sd\delta_i
       =\sum_{i=0}^n(-1)^i\,\Sd(\sigma\delta_i)
+      =\sum_{i=0}^n(-1)^i\,\Sd\partial_i\sigma
       =\Sd\partial\sigma.
-    \]
+    \end{align*}
     Hemos usado que $\Sd$ es un morfismo de complejos en $\LC_\bullet(\simplex{n})$ y
     el lema anterior con $\lambda=\delta_i$.
   \end{proof}
 \end{frame}
 
 \begin{frame}
-  \frametitle{$\Sd$ es homotópico a la identidad}
+  \frametitle{El operador $\Sd$ es homotópico a la identidad}
 
   \begin{proposition}
-    $\partial T+T\partial=\id-\Sd$ en $\Sing_\bullet(X)$.
+    En $\Sing_\bullet(X)$, se tiene que $\partial T+T\partial=\id-\Sd$ .
   \end{proposition}
 
   \begin{proof}
     Sea $\sigma\colon\simplex{n}\to X$. Por la identidad lineal
-    $\partial T\iota_n=\iota_n-\Sd\iota_n-T\partial\iota_n$ (si $n=0$,
-    $T\partial\iota_0=T[\;]=0$),
-    \[
+    $\partial T\id_{\simplex{n}}=\id_{\simplex{n}}-\Sd\id_{\simplex{n}}-T\partial\id_{\simplex{n}}$ (si $n=0$,
+    $T\partial\id_{\simplex{0}}=T[\;]=0$),
+    \begin{align*}
       \partial T\sigma
-      =\sigma_\#\partial T\iota_n
-      =\sigma-\Sd\sigma-\sum_{i=0}^n(-1)^i\,\sigma_\#T\delta_i
-      =\sigma-\Sd\sigma-\sum_{i=0}^n(-1)^i\,T(\sigma\delta_i),
-    \]
-    por el lema de compatibilidad con $\lambda=\delta_i$. La última suma es
-    $T\partial\sigma$, luego $\partial T\sigma+T\partial\sigma=\sigma-\Sd\sigma$.
+      &=\partial \sigma_\#T\id_{\simplex{n}}
+      =\sigma_\#\partial T\id_{\simplex{n}}
+      =\sigma_\#(\id_{\simplex{n}}-\Sd\id_{\simplex{n}}-T\partial\id_{\simplex{n}})\\
+      &=\sigma-\Sd\sigma-\sum_{i=0}^n(-1)^i\,\sigma_\#T\delta_i
+      =\sigma-\Sd\sigma-\sum_{i=0}^n(-1)^i\,T(\sigma\delta_i)\\
+      &=\sigma-\Sd\sigma-\sum_{i=0}^n(-1)^i\,T\partial_i\sigma
+      =\sigma-\Sd\sigma-T\partial\sigma.
+    \end{align*}
   \end{proof}
 \end{frame}
 
@@ -154,7 +165,7 @@
   \begin{proof}
     Para $\sigma\colon\simplex{n}\to X$,
     \[
-      g_\#\Sd\sigma=g_\#\sigma_\#\Sd\iota_n=(g\sigma)_\#\Sd\iota_n=\Sd(g\sigma)
+      g_\#\Sd\sigma=g_\#\sigma_\#\Sd\id_{\simplex{n}}=(g\sigma)_\#\Sd\id_{\simplex{n}}=\Sd(g\sigma)
       =\Sd g_\#\sigma,
     \]
     y análogamente para $T$.
@@ -176,15 +187,15 @@
     $\lambda\colon\simplex{n}\to\simplex{n}$ un símplice singular lineal
     tal que
     \[
-      \lambda\in\sd(\iota_n),
+      \lambda\in\sd(\id_{\simplex{n}}),
       \qquad
       \diam\lambda\leq\frac{n}{n+1}\diam\simplex{n}.
     \]
   \end{proposition}
 
   \begin{proof}
-    $\Sd\sigma=\sigma_\#\Sd\iota_n$, y los símplices lineales que aparecen en
-    $\Sd\iota_n$ están en $\sd(\iota_n)$ y cumplen la cota del diámetro,
+    Por definición, $\Sd\sigma=\sigma_\#\Sd\id_{\simplex{n}}$, y los símplices lineales que aparecen en
+    $\Sd\id_{\simplex{n}}$ están en $\sd(\id_{\simplex{n}})$ y cumplen la cota del diámetro,
     por el corolario de la sección anterior.
   \end{proof}
 

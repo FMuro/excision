@@ -51,6 +51,9 @@ No redefinir macros estándar de LaTeX (p. ej. `\int`).
 ## Reglas de estilo
 
 - Español. Rigor alto; lenguaje natural, ni telegráfico ni prolijo.
+- No empezar frases, párrafos, títulos ni pies de figura con símbolos
+  matemáticos: anteponer un sustantivo («El operador $\Sd$…», «El punto
+  $v_2$…») o reformular («Si $n=0$, …»).
 - Demostraciones completas: objetivo → pasos esenciales → justificación de
   los no evidentes → conclusión explícita.
 - Frames largos: `[allowframebreaks]`, nunca comprimir. **No usar `\pause`.**
