@@ -14,6 +14,22 @@
   son retractos por deformación. Nótese que $X\supseteq U\cup V\supseteq A\cup B=X$,
   luego $\{U,V\}$ es un recubrimiento de $X$.
 
+  \medskip
+
+  \centering
+  \begin{tikzpicture}[scale=0.5]
+    \fill[alertcolor, fill opacity=0.2] (-2.4,-1.9) rectangle (0,1.9);
+    \fill[black, fill opacity=0.1] (0,-1.9) rectangle (2.4,1.9);
+    \draw[dashed] (0.8,-1.9) -- (0.8,1.9);
+    \draw[dashed] (-0.8,-1.9) -- (-0.8,1.9);
+    \draw[very thick] (0,-1.9) -- (0,1.9);
+    \draw[thick] (-2.4,-1.9) rectangle (2.4,1.9);
+    \node at (-1.6,0) {$A$};
+    \node at (1.6,0) {$B$};
+    \draw[<->] (-2.4,2.4) -- (0.8,2.4) node[midway, above] {\scriptsize$U$};
+    \draw[<->] (-0.8,-2.4) -- (2.4,-2.4) node[midway, below] {\scriptsize$V$};
+  \end{tikzpicture}
+
   \framebreak
 
   El caso principal es el de los $CW$-complejos.

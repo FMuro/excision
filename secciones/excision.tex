@@ -21,6 +21,24 @@
 
   Es decir, podemos \alert{suprimir} $Z$ sin alterar la homología
   relativa, siempre que $Z$ esté bien dentro de $A$.
+
+  \medskip
+
+  \centering
+  \begin{tikzpicture}[scale=0.5]
+    \begin{scope}
+      \clip (-2.4,-1.9) rectangle (2.4,1.9);
+      \fill[black!10] (-2.4,-1.9) rectangle (2.4,1.9);
+      \fill[white] (0.5,0.1) ellipse (0.7 and 0.5);
+    \end{scope}
+    \fill[alertcolor, fill opacity=0.2] (0,0) ellipse (1.7 and 1.2);
+    \draw[thick] (0,0) ellipse (1.7 and 1.2);
+    \draw[thick] (-2.4,-1.9) rectangle (2.4,1.9);
+    \draw[thick, alertcolor, fill=white] (0.5,0.1) ellipse (0.7 and 0.5);
+    \node[alertcolor] at (0.5,0.1) {$Z$};
+    \node at (-1.0,0.6) {$A$};
+    \node at (-1.9,1.5) {$X$};
+  \end{tikzpicture}
 \end{frame}
 
 \begin{frame}[allowframebreaks]
@@ -39,6 +57,22 @@
 
   La hipótesis dice
   exactamente que $\cU=\{A,B\}$ es un recubrimiento de $X$.
+
+  \medskip
+
+  \begin{center}
+  \begin{tikzpicture}[scale=0.45]
+    \fill[alertcolor, fill opacity=0.2] (-2.4,-1.9) rectangle (0.6,1.9);
+    \fill[black, fill opacity=0.1] (-0.6,-1.9) rectangle (2.4,1.9);
+    \draw[thick, alertcolor] (0.6,-1.9) -- (0.6,1.9);
+    \draw[thick] (-0.6,-1.9) -- (-0.6,1.9);
+    \draw[thick] (-2.4,-1.9) rectangle (2.4,1.9);
+    \node at (-1.6,0) {$A$};
+    \node at (1.5,0) {$B$};
+    \node[rotate=90] at (0,0) {\scriptsize$A\cap B$};
+    \node at (-2.0,1.5) {$X$};
+  \end{tikzpicture}
+  \end{center}
 
   \framebreak
 
